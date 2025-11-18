@@ -23,6 +23,7 @@ export default function AdminAccessPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pwd }),
+        credentials: 'include',
       })
       if (res.ok) {
         router.push('/painel/familia-santos-aurora')
