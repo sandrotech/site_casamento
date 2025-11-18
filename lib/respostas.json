@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "nome": "Maria Oliveira",
+    "email": "maria.oliveira@example.com",
+    "telefone": "+55 11 91234-5678",
+    "confirmado": true,
+    "quantidade_convidados": 2,
+    "mensagem": "Ansiosa para celebrar com vocês!",
+    "data_resposta": "2025-11-10T18:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "nome": "João Santos",
+    "email": "joao.santos@example.com",
+    "telefone": "+55 21 99876-5432",
+    "confirmado": false,
+    "quantidade_convidados": 0,
+    "mensagem": "Infelizmente não poderei ir, parabéns!",
+    "data_resposta": "2025-11-12T12:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "nome": "Ana Paula",
+    "email": "ana.paula@example.com",
+    "telefone": "+55 31 98765-1234",
+    "confirmado": true,
+    "quantidade_convidados": 1,
+    "mensagem": "Estarei presente!",
+    "data_resposta": "2025-11-14T09:45:00.000Z"
+  },
+  {
+    "id": 4,
+    "nome": "Carlos Almeida",
+    "email": "carlos.almeida@example.com",
+    "telefone": "+55 41 97654-3210",
+    "confirmado": true,
+    "quantidade_convidados": 3,
+    "mensagem": "Vou com a família!",
+    "data_resposta": "2025-11-15T16:05:00.000Z"
+  },
+  {
+    "id": 5,
+    "nome": "Beatriz Rocha",
+    "email": "beatriz.rocha@example.com",
+    "telefone": "+55 51 96543-2109",
+    "confirmado": false,
+    "quantidade_convidados": 0,
+    "mensagem": "Mandando energias positivas!",
+    "data_resposta": "2025-11-16T20:20:00.000Z"
+  }
+]

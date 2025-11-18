@@ -28,10 +28,15 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# Copia apenas os arquivos necessários
+# Copia apenas os arquivos necessários do estágio builder
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package*.json ./
+
+# Copia o arquivo de dados
+# IMPORTANTE: A cópia robusta seria usar 'COPY --from=builder' se o arquivo
+# foi incluído na Etapa 1. Estamos usando a sua sintaxe que copia
+# do contexto de build (seu disco).
 COPY lib/respostas.json ./lib/respostas.json
 
 # Instala apenas dependências de produção ignorando peer deps
