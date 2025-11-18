@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/access/layout,_N_T_/access/familia-santos/layout,_N_T_/access/familia-santos/page,_N_T_/access/familia-santos"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/access/familia-santos/__PAGE__",
+    "/access/familia-santos",
+    "/access",
+    "/_index"
+  ]
+}

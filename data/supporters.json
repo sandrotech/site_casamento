@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "teste da sailva",
+    "photo": "/uploads/supporters/1763497379285-Gemini_Generated_Image_onaahionaahionaa.png",
+    "receipt": "/uploads/supporters/1763497379293-Gemini_Generated_Image_x40xtx40xtx40xtx.png",
+    "createdAt": "2025-11-18T20:22:59.302Z"
+  },
+  {
+    "id": 2,
+    "name": "Apoiador Teste",
+    "photo": "/uploads/supporters/1763498751655-foto-apoiador.png",
+    "receipt": "/uploads/supporters/1763498751660-comprovante.png",
+    "createdAt": "2025-11-18T20:45:51.663Z"
+  }
+]

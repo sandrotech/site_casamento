@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "teste",
+    "image": "/uploads/gifts/1763496061125-WhatsApp_Image_2025-11-18_at_10.12.27.jpeg",
+    "claimed": true,
+    "claimedBy": "Verificador com Foto",
+    "claimedByPhoto": "/uploads/gifts/1763498746458-foto.png"
+  },
+  {
+    "id": 2,
+    "name": "teste2",
+    "image": "/uploads/gifts/1763496193487-file.jpeg",
+    "claimed": true,
+    "claimedBy": "tetterer",
+    "claimedByPhoto": "/uploads/gifts/1763498826025-WhatsApp_Image_2025-09-26_at_16.14.57.jpeg"
+  }
+]

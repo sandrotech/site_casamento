@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Input } from '@/components/ui/input'
@@ -24,6 +24,8 @@ export default function GiftsAdminPage() {
   const [form, setForm] = useState({ name: '' })
   const [fileCreate, setFileCreate] = useState<File | null>(null)
   const [uploads, setUploads] = useState<Record<number, File | null>>({})
+  const [fileCreateKey, setFileCreateKey] = useState(0)
+  const [rowKeys, setRowKeys] = useState<Record<number, number>>({})
 
   async function load() {
     setLoading(true)
@@ -50,6 +52,7 @@ export default function GiftsAdminPage() {
       if (res.ok) {
         setForm({ name: '' })
         setFileCreate(null)
+        setFileCreateKey((k) => k + 1)
         await load()
         toast({ title: 'Presente cadastrado' })
       } else {
@@ -79,6 +82,8 @@ export default function GiftsAdminPage() {
       }
       if (res.ok) {
         await load()
+        setUploads((u) => ({ ...u, [id]: null }))
+        setRowKeys((rk) => ({ ...rk, [id]: (rk[id] || 0) + 1 }))
         toast({ title: 'Presente atualizado' })
       } else {
         toast({ title: 'Erro ao atualizar' })
@@ -129,7 +134,7 @@ export default function GiftsAdminPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="gift-image">Imagem</Label>
-                <Input id="gift-image" type="file" accept="image/*" onChange={(e) => setFileCreate(e.target.files?.[0] || null)} />
+                <Input key={fileCreateKey} id="gift-image" type="file" accept="image/*" onChange={(e) => setFileCreate(e.target.files?.[0] || null)} />
               </div>
             </div>
             <div className="flex justify-end mt-4">
@@ -159,7 +164,7 @@ export default function GiftsAdminPage() {
                       <Input value={g.name} onChange={(e) => setItems((prev) => prev.map((it) => it.id === g.id ? { ...it, name: e.target.value } : it))} />
                     </TableCell>
                     <TableCell className="max-w-[260px]">
-                      <Input type="file" accept="image/*" onChange={(e) => setUploads((u) => ({ ...u, [g.id]: e.target.files?.[0] || null }))} />
+                      <Input key={rowKeys[g.id] || 0} type="file" accept="image/*" onChange={(e) => setUploads((u) => ({ ...u, [g.id]: e.target.files?.[0] || null }))} />
                     </TableCell>
                     <TableCell>{g.claimed ? 'Escolhido' : 'Disponível'}</TableCell>
                     <TableCell className="flex gap-2">

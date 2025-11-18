@@ -15,8 +15,11 @@ import SupportSection from "@/components/sections/SupportSection"
 import WeddingLocationsSection from "@/components/sections/WeddingLocationsSection"
 
 interface Supporter {
+  id: number
   name: string
   photo?: string
+  receipt?: string
+  createdAt?: string
 }
 
  
@@ -41,6 +44,7 @@ export default function WeddingPage() {
 
   const [giftModalOpen, setGiftModalOpen] = useState(false)
   const [supportModalOpen, setSupportModalOpen] = useState(false)
+  const [supportSelectedGiftId, setSupportSelectedGiftId] = useState<number | null>(null)
   const [gifts, setGifts] = useState<{
     id: number
     name: string
@@ -58,12 +62,16 @@ export default function WeddingPage() {
 
   useEffect(() => {
     loadGifts()
+    loadSupporters()
   }, [])
 
-  const [supporters, setSupporters] = useState<Supporter[]>([
-    { name: "Maria Silva", photo: "/woman-portrait.png" },
-    { name: "João Santos", photo: "/thoughtful-man-portrait.png" },
-  ])
+  const [supporters, setSupporters] = useState<Supporter[]>([])
+
+  async function loadSupporters() {
+    const res = await fetch("/api/supporters")
+    const json = await res.json()
+    setSupporters(Array.isArray(json) ? json : [])
+  }
 
   const handleGiftClaim = (gift: (typeof gifts)[number]) => {
     setSelectedGift(gift)
@@ -74,27 +82,59 @@ export default function WeddingPage() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const name = String(formData.get("name") || "")
+    const photo = formData.get("photo") as File | null
 
     if (selectedGift) {
-      await fetch(`/api/gifts/${selectedGift.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ claimed: true, claimedBy: name }),
-      })
-      await loadGifts()
+      let res: Response
+      if (photo && photo.size) {
+        const fd = new FormData()
+        fd.append("claimed", "true")
+        fd.append("claimedBy", name)
+        fd.append("claimedByPhoto", photo)
+        res = await fetch(`/api/gifts/${selectedGift.id}`, { method: "PUT", body: fd })
+      } else {
+        res = await fetch(`/api/gifts/${selectedGift.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ claimed: true, claimedBy: name }),
+        })
+      }
+      if (res.ok) {
+        await loadGifts()
+      }
     }
 
     setGiftModalOpen(false)
     setSelectedGift(null)
   }
 
-  const handleSupportSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSupportSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const name = formData.get("supportName") as string
-
-    setSupporters([...supporters, { name }])
-    setSupportModalOpen(false)
+    const fd = new FormData()
+    fd.append("supportName", String(formData.get("supportName") || ""))
+    const receipt = formData.get("receipt") as File | null
+    const photo = formData.get("supportPhoto") as File | null
+    if (receipt) fd.append("receipt", receipt)
+    if (photo) fd.append("supportPhoto", photo)
+    const res = await fetch("/api/supporters", { method: "POST", body: fd })
+    if (res.ok) {
+      const created = await res.json().catch(() => ({}))
+      const giftIdStr = String(formData.get("giftId") || "")
+      const giftId = giftIdStr ? Number(giftIdStr) : supportSelectedGiftId
+      if (giftId) {
+        const name = String(formData.get("supportName") || "")
+        await fetch(`/api/gifts/${giftId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ claimed: true, claimedBy: name, claimedByPhoto: created?.photo }),
+        })
+        await loadGifts()
+      }
+      await loadSupporters()
+      setSupportModalOpen(false)
+      setSupportSelectedGiftId(null)
+    }
   }
 
   return (
@@ -108,7 +148,7 @@ export default function WeddingPage() {
       <RsvpSection />
 
 
-      <GiftListSection gifts={gifts} onClaim={handleGiftClaim} onPix={() => setSupportModalOpen(true)} />
+      <GiftListSection gifts={gifts} onClaim={handleGiftClaim} onPix={(gift) => { setSupportSelectedGiftId(gift.id); setSupportModalOpen(true) }} />
 
       <SupportSection supporters={supporters} pixKey={PIX_KEY} onOpenSupportModal={() => setSupportModalOpen(true)} />
 
@@ -160,7 +200,7 @@ export default function WeddingPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Support Modal */}
+  {/* Support Modal */}
       <Dialog open={supportModalOpen} onOpenChange={setSupportModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -177,6 +217,15 @@ export default function WeddingPage() {
                 required
                 className="bg-background"
               />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="giftId">Referente ao Presente (opcional)</Label>
+              <select id="giftId" name="giftId" className="bg-background border border-border rounded-md h-9 px-3">
+                <option value="">Selecionar...</option>
+                {gifts.filter((g) => !g.claimed).map((g) => (
+                  <option key={g.id} value={g.id} selected={supportSelectedGiftId === g.id}>{g.name}</option>
+                ))}
+              </select>
             </div>
             <div className="space-y-2">
               <Label htmlFor="receipt">Comprovante PIX</Label>

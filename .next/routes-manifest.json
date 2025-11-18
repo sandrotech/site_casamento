@@ -1,0 +1,113 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/gifts/[id]",
+      "regex": "^/api/gifts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/gifts/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/access/familia-santos",
+      "regex": "^/access/familia\\-santos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/access/familia\\-santos(?:/)?$"
+    },
+    {
+      "page": "/api/admin/login",
+      "regex": "^/api/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/login(?:/)?$"
+    },
+    {
+      "page": "/api/gifts",
+      "regex": "^/api/gifts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/gifts(?:/)?$"
+    },
+    {
+      "page": "/api/rsvp",
+      "regex": "^/api/rsvp(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/rsvp(?:/)?$"
+    },
+    {
+      "page": "/gifts",
+      "regex": "^/gifts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gifts(?:/)?$"
+    },
+    {
+      "page": "/painel/familia-santos-aurora",
+      "regex": "^/painel/familia\\-santos\\-aurora(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/painel/familia\\-santos\\-aurora(?:/)?$"
+    },
+    {
+      "page": "/rsvps",
+      "regex": "^/rsvps(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/rsvps(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

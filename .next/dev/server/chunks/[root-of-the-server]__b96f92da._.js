@@ -50,7 +50,7 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/server.js [app-route] (ecmascript)");
 ;
-const PASSWORD = process.env.ADMIN_PASSWORD || "familia_santos";
+const PASSWORD = (process.env.ADMIN_PASSWORD || "familia_santos").toLowerCase().trim();
 async function POST(request) {
     const contentType = request.headers.get("content-type") || "";
     let pwd = "";
@@ -61,7 +61,7 @@ async function POST(request) {
         const form = await request.formData();
         pwd = String(form.get("password") || "");
     }
-    if (pwd === PASSWORD) {
+    if (pwd.trim().toLowerCase() === PASSWORD) {
         const res = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             ok: true
         });

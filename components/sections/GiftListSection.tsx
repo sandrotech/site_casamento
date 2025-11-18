@@ -17,7 +17,7 @@ type Gift = {
 type Props = {
   gifts: Gift[]
   onClaim: (gift: Gift) => void
-  onPix?: () => void
+  onPix?: (gift: Gift) => void
 }
 
 const fadeInUp = {
@@ -55,13 +55,42 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                 <div className="aspect-square relative overflow-hidden bg-muted">
                   <img src={gift.image || '/placeholder.svg'} alt={gift.name} className="w-full h-full object-cover" />
                   {gift.claimed && (
-                    <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
-                      <div className="text-center text-primary-foreground p-4">
-                        <Heart className="w-8 h-8 mx-auto mb-2 fill-current" />
-                        <p className="font-semibold">Já foi escolhido</p>
-                        {gift.claimedBy && <p className="text-sm mt-1">por {gift.claimedBy}</p>}
+                    <>
+                      <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
+                        <div className="text-center text-primary-foreground p-4">
+                          <Heart className="w-8 h-8 mx-auto mb-2 fill-current" />
+                          <p className="font-semibold">Já foi escolhido</p>
+                          {gift.claimedBy && <p className="text-sm mt-1">por {gift.claimedBy}</p>}
+                        </div>
                       </div>
-                    </div>
+                      {gift.claimedByPhoto ? (
+                        <motion.div
+                          className="absolute z-10 bottom-3 right-3 rounded-full ring-2 ring-background/80 shadow-lg"
+                          initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <img
+                            src={gift.claimedByPhoto}
+                            alt={gift.claimedBy || gift.name}
+                            className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
+                          />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          className="absolute z-10 bottom-3 right-3 w-16 h-16 md:w-20 md:h-20 rounded-full bg-background/90 ring-2 ring-background/80 shadow-lg flex items-center justify-center"
+                          initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Heart className="w-7 h-7 text-primary" />
+                        </motion.div>
+                      )}
+                    </>
                   )}
                 </div>
                 <CardContent className="p-6">
@@ -70,7 +99,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                     <Button onClick={() => onClaim(gift)} disabled={gift.claimed} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50">
                       {gift.claimed ? 'Indisponível' : 'Vou dar este presente'}
                     </Button>
-                    <Button onClick={onPix} variant="outline" className="w-full">
+                    <Button onClick={() => onPix?.(gift)} variant="outline" className="w-full">
                       Contribuir via PIX
                     </Button>
                   </div>
