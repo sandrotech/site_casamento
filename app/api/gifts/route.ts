@@ -42,6 +42,7 @@ export async function POST(request: Request) {
   if (contentType.includes("multipart/form-data")) {
     const form = await request.formData()
     const name = String(form.get("name") || "")
+    const category = String(form.get("category") || "")
     const imageFile = form.get("image") as File | null
     let imagePath = ""
     if (imageFile && typeof imageFile === "object" && imageFile.size) {
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
       id: nextId,
       name,
       image: imagePath,
+      category,
       claimed: false,
     }
     data.push(entry)
@@ -62,6 +64,7 @@ export async function POST(request: Request) {
       id: nextId,
       name: String(body?.name || ""),
       image: String(body?.image || ""),
+      category: String(body?.category || ""),
       claimed: Boolean(body?.claimed || false),
       claimedBy: body?.claimedBy ? String(body.claimedBy) : undefined,
       claimedByPhoto: body?.claimedByPhoto ? String(body.claimedByPhoto) : undefined,

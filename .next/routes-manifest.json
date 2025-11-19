@@ -73,6 +73,12 @@
       "namedRegex": "^/api/rsvp(?:/)?$"
     },
     {
+      "page": "/api/supporters",
+      "regex": "^/api/supporters(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/supporters(?:/)?$"
+    },
+    {
       "page": "/gifts",
       "regex": "^/gifts(?:/)?$",
       "routeKeys": {},

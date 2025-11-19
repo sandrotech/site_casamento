@@ -5,7 +5,8 @@
     "image": "/uploads/gifts/1763496061125-WhatsApp_Image_2025-11-18_at_10.12.27.jpeg",
     "claimed": true,
     "claimedBy": "Verificador com Foto",
-    "claimedByPhoto": "/uploads/gifts/1763498746458-foto.png"
+    "claimedByPhoto": "/uploads/gifts/1763498746458-foto.png",
+    "category": ""
   },
   {
     "id": 2,
@@ -13,6 +14,406 @@
     "image": "/uploads/gifts/1763496193487-file.jpeg",
     "claimed": true,
     "claimedBy": "tetterer",
-    "claimedByPhoto": "/uploads/gifts/1763498826025-WhatsApp_Image_2025-09-26_at_16.14.57.jpeg"
+    "claimedByPhoto": "/uploads/gifts/1763498826025-WhatsApp_Image_2025-09-26_at_16.14.57.jpeg",
+    "category": ""
+  },
+  {
+    "id": 3,
+    "name": "Jogo de panelas",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 4,
+    "name": "Panela de pressão",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 5,
+    "name": "Jogo de talheres",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 6,
+    "name": "Jogo de copos",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 7,
+    "name": "Jogo de louças (pratos rasos, fundos e de sobremesa)",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 8,
+    "name": "Jogo de assadeiras (1 de vidro e 1 de alumínio/antiaderente)",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 9,
+    "name": "Pano de prato",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 10,
+    "name": "Potes para mantimentos herméticos",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 11,
+    "name": "Potes de plástico",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 12,
+    "name": "Lixeira grande",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 13,
+    "name": "Tábua de corte",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 14,
+    "name": "Coadores (de café e de líquidos)",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 15,
+    "name": "Liquidificador",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 16,
+    "name": "Micro-ondas",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 17,
+    "name": "Escorredor de louça",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 18,
+    "name": "Escorredor de arroz/macarrão",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 19,
+    "name": "Jogo americano ou toalha de mesa",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 20,
+    "name": "Kit de utensílios (colher de arroz, concha, espátula, pegador de macarrão etc.)",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 21,
+    "name": "Facas boas de cozinha (faca de chef, faca de pão)",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 22,
+    "name": "Abridor de latas/garrafas",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 23,
+    "name": "Peneira",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 24,
+    "name": "Colheres/xícaras medidoras",
+    "image": "",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 25,
+    "name": "Toalhas de banho",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 26,
+    "name": "Toalhas de mão",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 27,
+    "name": "Tapetes de banheiro",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 28,
+    "name": "Lixeira pequena",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 29,
+    "name": "Ducha (se o banheiro não tiver)",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 30,
+    "name": "Porta-sabonete e porta-shampoo (suporte)",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 31,
+    "name": "Escova sanitária com suporte",
+    "image": "",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 32,
+    "name": "Vassoura",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 33,
+    "name": "Rodo",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 34,
+    "name": "Esfregão",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 35,
+    "name": "Pá",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 36,
+    "name": "Balde",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 37,
+    "name": "Varal (de teto ou de chão/embutir)",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 38,
+    "name": "Pregadores",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 39,
+    "name": "Pano de chão",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 40,
+    "name": "Cesto de roupas sujas",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 41,
+    "name": "Cesto organizador para produtos de limpeza",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 42,
+    "name": "Ferro de passar",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 43,
+    "name": "Tábua de passar",
+    "image": "",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 44,
+    "name": "Cama de casal",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 45,
+    "name": "Colchão",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 46,
+    "name": "Guarda-roupa ou cômoda",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 47,
+    "name": "Cabides",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 48,
+    "name": "Protetor de colchão",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 49,
+    "name": "Lençóis",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 50,
+    "name": "Fronhas",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 51,
+    "name": "Travesseiros",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 52,
+    "name": "Edredom",
+    "image": "",
+    "claimed": false,
+    "category": "Quarto"
+  },
+  {
+    "id": 53,
+    "name": "Sofá",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 54,
+    "name": "Mesa com cadeiras",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 55,
+    "name": "Geladeira",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 56,
+    "name": "Máquina de lavar",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 57,
+    "name": "Cooktop ou fogão",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 58,
+    "name": "Criado-mudo e/ou abajur (pelo menos um lado da cama)",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
+  },
+  {
+    "id": 59,
+    "name": "Cortinas e varões (principalmente do quarto)",
+    "image": "",
+    "claimed": false,
+    "category": "Sala"
   }
 ]

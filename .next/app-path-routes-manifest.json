@@ -6,6 +6,7 @@
   "/api/gifts/[id]/route": "/api/gifts/[id]",
   "/api/gifts/route": "/api/gifts",
   "/api/rsvp/route": "/api/rsvp",
+  "/api/supporters/route": "/api/supporters",
   "/gifts/page": "/gifts",
   "/page": "/",
   "/painel/familia-santos-aurora/page": "/painel/familia-santos-aurora",

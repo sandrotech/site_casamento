@@ -6,6 +6,7 @@
   "/api/gifts/[id]/route": "app/api/gifts/[id]/route.js",
   "/api/gifts/route": "app/api/gifts/route.js",
   "/api/rsvp/route": "app/api/rsvp/route.js",
+  "/api/supporters/route": "app/api/supporters/route.js",
   "/gifts/page": "app/gifts/page.js",
   "/page": "app/page.js",
   "/painel/familia-santos-aurora/page": "app/painel/familia-santos-aurora/page.js",
