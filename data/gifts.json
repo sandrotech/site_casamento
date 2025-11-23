@@ -3,8 +3,10 @@
     "id": 1,
     "name": "Jogo de panelas",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "teste",
+    "claimedByPhoto": "/uploads/supporters/1763917536034-foto1.png"
   },
   {
     "id": 2,

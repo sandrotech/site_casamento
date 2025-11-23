@@ -84,14 +84,9 @@ async function writeAll(items) {
     });
     await __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["promises"].writeFile(DATA_PATH, JSON.stringify(items, null, 2), "utf-8");
 }
-async function PUT(request, { params }) {
-    let raw = params?.id;
-    if (!raw) {
-        try {
-            const url = new URL(request.url);
-            raw = url.pathname.split('/').filter(Boolean).pop() || '';
-        } catch  {}
-    }
+async function PUT(request, context) {
+    const { id: idParam } = await context.params;
+    let raw = idParam;
     let id = parseInt(String(raw).replace(/[^0-9]/g, ''), 10);
     const contentType = request.headers.get("content-type") || "";
     const items = await readAll();
@@ -152,8 +147,9 @@ async function PUT(request, { params }) {
     await writeAll(items);
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(items[idx]);
 }
-async function DELETE(_request, { params }) {
-    const id = Number(params.id);
+async function DELETE(_request, context) {
+    const { id: idParam } = await context.params;
+    const id = Number(idParam);
     const items = await readAll();
     const idx = items.findIndex((g)=>Number(g.id) === id);
     if (idx === -1) return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
