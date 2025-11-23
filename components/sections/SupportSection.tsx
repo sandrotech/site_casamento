@@ -96,13 +96,9 @@ export default function SupportSection({ supporters, pixKey, onOpenSupportModal 
                   className="text-center"
                 >
                   <div className="w-20 h-20 mx-auto mb-2 rounded-full overflow-hidden bg-muted">
-                    {supporter.photo ? (
-                      <img src={withBase(supporter.photo || '/placeholder.svg')} alt={supporter.name} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-primary/20">
-                        <Heart className="w-8 h-8 text-primary" />
-                      </div>
-                    )}
+                    <div className="w-full h-full flex items-center justify-center bg-primary/20">
+                      <Heart className="w-8 h-8 text-primary" />
+                    </div>
                   </div>
                   <p className="text-sm text-foreground font-medium">{supporter.name}</p>
                 </motion.div>
