@@ -3,6 +3,8 @@ import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
 
+export const runtime = "nodejs"
+
 const DATA_PATH = path.join(process.cwd(), "data", "gifts.json")
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "gifts")
 

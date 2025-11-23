@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
+import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
+
+export const runtime = "nodejs"
 
 const DATA_PATH = path.join(process.cwd(), "data", "gifts.json")
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "gifts")
@@ -29,14 +32,19 @@ export async function POST(request: Request) {
   const nextId = data.reduce((max: number, g: any) => Math.max(max, Number(g.id) || 0), 0) + 1
 
   async function saveUploadedFile(file: File) {
-    const arrayBuffer = await file.arrayBuffer()
-    const buffer = Buffer.from(arrayBuffer)
     await fs.mkdir(UPLOAD_DIR, { recursive: true })
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
-    const filename = `${Date.now()}-${safeName}`
-    const filePath = path.join(UPLOAD_DIR, filename)
-    await fs.writeFile(filePath, buffer)
-    return `/uploads/gifts/${filename}`
+    const base = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
+    const raw = Buffer.from(await file.arrayBuffer())
+    try {
+      const processed = await sharp(raw, { animated: true }).rotate().jpeg({ quality: 82 }).toBuffer()
+      const name = `${Date.now()}-${base.replace(/\.[^.]+$/, "")}.jpg`
+      await fs.writeFile(path.join(UPLOAD_DIR, name), processed)
+      return `/uploads/gifts/${name}`
+    } catch {
+      const name = `${Date.now()}-${base}`
+      await fs.writeFile(path.join(UPLOAD_DIR, name), raw)
+      return `/uploads/gifts/${name}`
+    }
   }
 
   if (contentType.includes("multipart/form-data")) {
