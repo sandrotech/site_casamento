@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart } from 'lucide-react'
+import { Heart, ChevronsDown, Hand } from 'lucide-react'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -45,12 +45,18 @@ export default function HeaderHero() {
         </motion.div>
       </motion.div>
       <motion.div
-        className="absolute bottom-10"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
       >
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-primary rounded-full" />
+        <div className="flex flex-col items-center gap-1 pointer-events-none select-none">
+          <motion.div animate={{ y: [0, 4, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.6 }}>
+            <ChevronsDown className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+          </motion.div>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.8, delay: 0.2 }}>
+            <Hand className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+          </motion.div>
+          <span className="text-xs md:text-sm text-primary/80">Arraste para baixo</span>
         </div>
       </motion.div>
     </motion.header>

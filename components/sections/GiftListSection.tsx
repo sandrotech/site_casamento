@@ -29,7 +29,7 @@ const fadeInUp = {
 }
 
 export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
-  const categories = ['Cozinha', 'Banheiro', 'Lavanderia', 'Quarto', 'Sala']
+  const categories = ['Cozinha', 'Banheiro', 'Lavanderia', 'Sala e Quarto']
   const groups = categories
     .map((c) => ({ label: c, items: gifts.filter((g) => (g.category || '') === c) }))
     .filter((g) => g.items.length > 0)

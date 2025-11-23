@@ -34,14 +34,14 @@ export default function HistorySection() {
               Entre risadas tímidas e conversas que pareciam não ter fim, nasceu uma amizade que em pouco tempo virou algo maior.
             </p>
             <p className="text-foreground/80 leading-relaxed">
-              Vieram os cafés depois do culto, as mensagens de boa noite, os planos para o futuro e, principalmente, a certeza de que Deus
+              Vieram os sorvetes depois das missas, as mensagens de bom dia,boa noite... os planos para o futuro e, principalmente, a certeza de que Deus
               estava guiando cada passo. Em meio a desafios, mudanças e conquistas, o amor só cresceu – maduro, paciente e cheio de cuidado.
             </p>
 
             <div className="space-y-5 border-l border-border pl-5">
               <div className="relative">
                 <span className="absolute -left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-primary" />
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">2019 • O encontro</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">• O encontro</p>
                 <p className="text-sm text-foreground/80 mt-1">
                   Um grupo de amigos, uma conversa despretensiosa e o primeiro olhar que mudou tudo.
                 </p>
@@ -49,7 +49,7 @@ export default function HistorySection() {
 
               <div className="relative">
                 <span className="absolute -left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-primary/80" />
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">2021 • Os planos</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">• Os planos</p>
                 <p className="text-sm text-foreground/80 mt-1">
                   Entre sonhos compartilhados, veio a certeza: queriam construir uma vida juntos, com propósito e fé.
                 </p>
@@ -57,9 +57,9 @@ export default function HistorySection() {
 
               <div className="relative">
                 <span className="absolute -left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-primary/60" />
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">2024 • O pedido</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">• O pedido</p>
                 <p className="text-sm text-foreground/80 mt-1">
-                  Diante de Deus, da família e de muitas lágrimas, um “sim” que mudou para sempre o capítulo da história.
+                  Diante de Deus, da família e de muitas muitas pessoas em meio a uma missa(Umas 300 ou mais pessoas), um “sim” que mudou para sempre o capítulo da história.
                 </p>
               </div>
             </div>
@@ -91,13 +91,20 @@ export default function HistorySection() {
         </div>
 
         <div className="mt-12">
-          <p className="text-sm tracking-[0.25em] uppercase text-center text-muted-foreground mb-4">Pré-wedding</p>
+          <p className="text-sm tracking-[0.25em] uppercase text-center text-muted-foreground mb-4">Pedido de Casamento</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[0, 1, 2, 3].map((i) => (
-              <motion.div key={i} className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: i ? i * 0.03 : 0 }}>
-                <img src="/fotos/foto1.jpeg" alt={`Pré-wedding ${i + 3}`} className="w-full h-full object-cover" />
-              </motion.div>
-            ))}
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
+              <img src="/fotos/foto1.jpeg" alt="Pedido de casamento 1" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.03 }}>
+              <img src="/fotos/foto5.jpeg" alt="Pedido de casamento 2" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.06 }}>
+              <img src="/fotos/foto6.jpeg" alt="Pedido de casamento 3" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.09 }}>
+              <img src="/fotos/foto7.jpeg" alt="Pedido de casamento 4" className="w-full h-full object-cover" />
+            </motion.div>
           </div>
         </div>
       </div>

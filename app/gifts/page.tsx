@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/hooks/use-toast'
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from '@/components/ui/alert-dialog'
+import { useRouter } from 'next/navigation'
 
 type Gift = {
   id: number
@@ -19,6 +21,7 @@ type Gift = {
 
 export default function GiftsAdminPage() {
   const { toast } = useToast()
+  const router = useRouter()
   const [items, setItems] = useState<Gift[]>([])
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({ name: '' })
@@ -26,6 +29,8 @@ export default function GiftsAdminPage() {
   const [uploads, setUploads] = useState<Record<number, File | null>>({})
   const [fileCreateKey, setFileCreateKey] = useState(0)
   const [rowKeys, setRowKeys] = useState<Record<number, number>>({})
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [confirmId, setConfirmId] = useState<number | null>(null)
 
   async function load() {
     setLoading(true)
@@ -98,8 +103,8 @@ export default function GiftsAdminPage() {
     try {
       const res = await fetch(`/api/gifts/${id}`, { method: 'DELETE' })
       if (res.ok) {
-        await load()
         toast({ title: 'Presente removido' })
+        router.push('/painel/familia-santos-aurora')
       } else {
         const j = await res.json().catch(() => ({}))
         if (res.status === 409 || j?.error === 'claimed') {
@@ -169,7 +174,16 @@ export default function GiftsAdminPage() {
                     <TableCell>{g.claimed ? 'Escolhido' : 'Disponível'}</TableCell>
                     <TableCell className="flex gap-2">
                       <Button variant="outline" onClick={() => updateGift(g.id, { name: g.name }, uploads[g.id] || null)}>Salvar</Button>
-                      <Button variant="destructive" disabled={g.claimed} onClick={() => deleteGift(g.id)}>Excluir</Button>
+                      <Button
+                        variant="destructive"
+                        disabled={g.claimed}
+                        onClick={() => {
+                          setConfirmId(g.id)
+                          setConfirmOpen(true)
+                        }}
+                      >
+                        Excluir
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -179,6 +193,28 @@ export default function GiftsAdminPage() {
           </CardContent>
         </Card>
       </div>
+      <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Excluir presente?</AlertDialogTitle>
+            <AlertDialogDescription>Esta ação não pode ser desfeita.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setConfirmOpen(false)}>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={async () => {
+                if (confirmId != null) {
+                  await deleteGift(confirmId)
+                }
+                setConfirmOpen(false)
+                setConfirmId(null)
+              }}
+            >
+              Excluir
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   )
 }

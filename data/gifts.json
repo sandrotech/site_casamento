@@ -1,419 +1,1159 @@
 [
   {
     "id": 1,
-    "name": "teste",
-    "image": "/uploads/gifts/1763496061125-WhatsApp_Image_2025-11-18_at_10.12.27.jpeg",
-    "claimed": true,
-    "claimedBy": "Verificador com Foto",
-    "claimedByPhoto": "/uploads/gifts/1763498746458-foto.png",
-    "category": ""
+    "name": "Jogo de panelas",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
+    "claimed": false,
+    "category": "Cozinha"
   },
   {
     "id": 2,
-    "name": "teste2",
-    "image": "/uploads/gifts/1763496193487-file.jpeg",
-    "claimed": true,
-    "claimedBy": "tetterer",
-    "claimedByPhoto": "/uploads/gifts/1763498826025-WhatsApp_Image_2025-09-26_at_16.14.57.jpeg",
-    "category": ""
+    "name": "Panela de pressão",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
+    "claimed": false,
+    "category": "Cozinha"
   },
   {
     "id": 3,
-    "name": "Jogo de panelas",
-    "image": "",
+    "name": "Jogo de talheres",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 4,
-    "name": "Panela de pressão",
-    "image": "",
+    "name": "Jogo de copos",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
-    "category": "Cozinha"
+    "category": "Cozinha",
+    "claimedByPhoto": "/uploads/supporters/1763855341132-eab4f0cf-9002-422f-b219-8bbf3d710ded.jfif"
   },
   {
     "id": 5,
-    "name": "Jogo de talheres",
-    "image": "",
+    "name": "Jogo de taças",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
-    "category": "Cozinha"
+    "category": "Cozinha",
+    "claimedByPhoto": "/uploads/gifts/1763855394987-unnamed__4_.png"
   },
   {
     "id": 6,
-    "name": "Jogo de copos",
-    "image": "",
+    "name": "Jogo de xícaras",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 7,
     "name": "Jogo de louças (pratos rasos, fundos e de sobremesa)",
-    "image": "",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 8,
-    "name": "Jogo de assadeiras (1 de vidro e 1 de alumínio/antiaderente)",
-    "image": "",
-    "claimed": false,
-    "category": "Cozinha"
-  },
-  {
-    "id": 9,
-    "name": "Pano de prato",
-    "image": "",
+    "name": "Jogo de assadeiras (vidro, alumínio e antiaderente)",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 10,
-    "name": "Potes para mantimentos herméticos",
-    "image": "",
+    "name": "Pote para mantimentos herméticos",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 11,
-    "name": "Potes de plástico",
-    "image": "",
-    "claimed": false,
-    "category": "Cozinha"
-  },
-  {
-    "id": 12,
     "name": "Lixeira grande",
-    "image": "",
-    "claimed": false,
-    "category": "Cozinha"
-  },
-  {
-    "id": 13,
-    "name": "Tábua de corte",
-    "image": "",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 14,
-    "name": "Coadores (de café e de líquidos)",
-    "image": "",
+    "name": "Jarra de suco",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 15,
-    "name": "Liquidificador",
-    "image": "",
+    "name": "Kit de potes plásticos empilháveis (20 peças)",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 16,
-    "name": "Micro-ondas",
-    "image": "",
+    "name": "Jogo de tábuas de corte vidro (3 peças)",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 17,
-    "name": "Escorredor de louça",
-    "image": "",
-    "claimed": false,
-    "category": "Cozinha"
-  },
-  {
-    "id": 18,
-    "name": "Escorredor de arroz/macarrão",
-    "image": "",
+    "name": "Porta-tempero giratório com 12 potes",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 19,
-    "name": "Jogo americano ou toalha de mesa",
-    "image": "",
+    "name": "Chaleira",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 20,
-    "name": "Kit de utensílios (colher de arroz, concha, espátula, pegador de macarrão etc.)",
-    "image": "",
+    "name": "Liquidificador",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 21,
-    "name": "Facas boas de cozinha (faca de chef, faca de pão)",
-    "image": "",
+    "name": "Sanduicheira ou grill",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 22,
-    "name": "Abridor de latas/garrafas",
-    "image": "",
+    "name": "Micro-ondas",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
   },
   {
     "id": 23,
-    "name": "Peneira",
-    "image": "",
+    "name": "Formas de bolo",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
     "category": "Cozinha"
-  },
-  {
-    "id": 24,
-    "name": "Colheres/xícaras medidoras",
-    "image": "",
-    "claimed": false,
-    "category": "Cozinha"
-  },
-  {
-    "id": 25,
-    "name": "Toalhas de banho",
-    "image": "",
-    "claimed": false,
-    "category": "Banheiro"
-  },
-  {
-    "id": 26,
-    "name": "Toalhas de mão",
-    "image": "",
-    "claimed": false,
-    "category": "Banheiro"
   },
   {
     "id": 27,
-    "name": "Tapetes de banheiro",
-    "image": "",
+    "name": "Jogo americano ou toalha de mesa",
+    "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
-    "category": "Banheiro"
+    "category": "Cozinha"
   },
   {
     "id": 28,
-    "name": "Lixeira pequena",
-    "image": "",
+    "name": "Toalhas de banho (3 peças)",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
     "claimed": false,
     "category": "Banheiro"
   },
   {
     "id": 29,
-    "name": "Ducha (se o banheiro não tiver)",
-    "image": "",
+    "name": "Toalhas de mão (3 peças)",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
     "claimed": false,
     "category": "Banheiro"
   },
   {
     "id": 30,
-    "name": "Porta-sabonete e porta-shampoo (suporte)",
-    "image": "",
+    "name": "Tapetes de banheiro",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
     "claimed": false,
     "category": "Banheiro"
   },
   {
     "id": 31,
-    "name": "Escova sanitária com suporte",
-    "image": "",
+    "name": "Lixeira pequena inox",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
     "claimed": false,
     "category": "Banheiro"
   },
   {
-    "id": 32,
-    "name": "Vassoura",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 33,
-    "name": "Rodo",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 34,
-    "name": "Esfregão",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 35,
-    "name": "Pá",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 36,
-    "name": "Balde",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 37,
-    "name": "Varal (de teto ou de chão/embutir)",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 38,
-    "name": "Pregadores",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 39,
-    "name": "Pano de chão",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 40,
-    "name": "Cesto de roupas sujas",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 41,
-    "name": "Cesto organizador para produtos de limpeza",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
     "id": 42,
-    "name": "Ferro de passar",
-    "image": "",
+    "name": "Varal de teto ou embutir",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
     "claimed": false,
     "category": "Lavanderia"
-  },
-  {
-    "id": 43,
-    "name": "Tábua de passar",
-    "image": "",
-    "claimed": false,
-    "category": "Lavanderia"
-  },
-  {
-    "id": 44,
-    "name": "Cama de casal",
-    "image": "",
-    "claimed": false,
-    "category": "Quarto"
-  },
-  {
-    "id": 45,
-    "name": "Colchão",
-    "image": "",
-    "claimed": false,
-    "category": "Quarto"
   },
   {
     "id": 46,
-    "name": "Guarda-roupa ou cômoda",
-    "image": "",
+    "name": "Cesto organizador para produtos de limpeza",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Lavanderia"
   },
   {
     "id": 47,
-    "name": "Cabides",
-    "image": "",
+    "name": "Mantas e almofadas para sofá",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 48,
-    "name": "Protetor de colchão",
-    "image": "",
+    "name": "Lençóis (com ou sem elástico)",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 49,
-    "name": "Lençóis",
-    "image": "",
+    "name": "Edredom",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 50,
-    "name": "Fronhas",
-    "image": "",
+    "name": "Colcha de cama",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 51,
     "name": "Travesseiros",
-    "image": "",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 52,
-    "name": "Edredom",
-    "image": "",
+    "name": "Fronhas",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Quarto"
+    "category": "Sala e Quarto"
   },
   {
     "id": 53,
-    "name": "Sofá",
-    "image": "",
+    "name": "Ventilador de coluna",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
   },
   {
     "id": 54,
-    "name": "Mesa com cadeiras",
-    "image": "",
+    "name": "Ferro de passar",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
-  },
-  {
-    "id": 55,
-    "name": "Geladeira",
-    "image": "",
-    "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
   },
   {
     "id": 56,
-    "name": "Máquina de lavar",
-    "image": "",
+    "name": "Puff",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
   },
   {
     "id": 57,
-    "name": "Cooktop ou fogão",
-    "image": "",
+    "name": "Centro de mesa",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
   },
   {
     "id": 58,
-    "name": "Criado-mudo e/ou abajur (pelo menos um lado da cama)",
-    "image": "",
+    "name": "Mesa lateral pequena",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
   },
   {
-    "id": 59,
-    "name": "Cortinas e varões (principalmente do quarto)",
-    "image": "",
+    "id": 61,
+    "name": "Churrasqueira elétrica pequena",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
     "claimed": false,
-    "category": "Sala"
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 62,
+    "name": "Criado-mudo / abajur",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 63,
+    "name": "Cortinas e varões",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 64,
+    "name": "Tapete para sala e quarto",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 65,
+    "name": "Relógio de parede",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 67,
+    "name": "Air fryer",
+    "image": "/uploads/gifts/1763860437266-presentes_cozinha.jpg",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 68,
+    "name": "Cafeteira elétrica",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 70,
+    "name": "Batedeira",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 72,
+    "name": "Processador de alimentos",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 73,
+    "name": "Espremedor de frutas",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 74,
+    "name": "Panela elétrica de arroz",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 75,
+    "name": "Jogo de frigideiras antiaderentes",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 78,
+    "name": "Travessas de vidro (jogo)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 80,
+    "name": "Potes de vidro herméticos",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 86,
+    "name": "Espátulas de silicone (kit)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 87,
+    "name": "Concha e pegador de massa",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 89,
+    "name": "Jogo de peneiras inox profissional (5 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 92,
+    "name": "Jogo de facas de cozinha",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 99,
+    "name": "Organizador de pia inox com escorredor",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 102,
+    "name": "Kit mesa posta com porta-guardanapos (12 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 103,
+    "name": "Galheteiro (azeite e vinagre)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 106,
+    "name": "Pratos de sobremesa (jogo)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 108,
+    "name": "Travessas para servir (jogo)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 113,
+    "name": "Chaleira elétrica",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 114,
+    "name": "Forno elétrico",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 115,
+    "name": "Grill elétrico",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 128,
+    "name": "Kit suporte para toalhas",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 135,
+    "name": "Varal de chão",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 150,
+    "name": "Cesto multiuso organizador",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 151,
+    "name": "Purificador de água de parede com refrigeração",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 152,
+    "name": "Depurador de ar slim para fogão 4 bocas",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 153,
+    "name": "Fruteira de chão com prateleiras e rodízios",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 154,
+    "name": "Armário aéreo multiuso para cozinha",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 155,
+    "name": "Balcão buffet para apoiar micro-ondas e eletros",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 156,
+    "name": "Carrinho auxiliar de cozinha com rodinhas",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 157,
+    "name": "Centro de mesa giratório em madeira (lazy susan)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 158,
+    "name": "Travessas de inox fundas para assados (3 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 159,
+    "name": "Conjunto de tigelas de inox com tampa (6 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 160,
+    "name": "Kit organizador de gavetas para talheres e utensílios",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 161,
+    "name": "Kit formas retangulares antiaderentes (3 tamanhos)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 162,
+    "name": "Máquina de waffle elétrica",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 163,
+    "name": "Panificadora elétrica (máquina de fazer pão)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 164,
+    "name": "Mixer de mão com copo medidor",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 165,
+    "name": "Kit potes organizadores para geladeira (12 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 166,
+    "name": "Kit para fondue (queijo e chocolate)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 167,
+    "name": "Adega climatizada pequena para vinhos",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 168,
+    "name": "Conjunto de bandejas decorativas em madeira e metal (3 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 169,
+    "name": "Dispenser duplo de cereais de bancada",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 170,
+    "name": "Jogo de tábuas de frios com facas (5 peças)",
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": false,
+    "category": "Cozinha"
+  },
+  {
+    "id": 171,
+    "name": "Espelho de banheiro com armário embutido",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 172,
+    "name": "Box de vidro temperado para banheiro",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 173,
+    "name": "Chuveiro elétrico com pressurizador",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 174,
+    "name": "Kit porta-shampoo de canto em inox (3 prateleiras)",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 175,
+    "name": "Cesto de roupa suja com tampa para banheiro",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 176,
+    "name": "Kit aromatizadores e difusores para banheiro (4 peças)",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 177,
+    "name": "Kit barras de apoio para box e vaso sanitário",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 178,
+    "name": "Espelho de aumento articulado para bancada do banheiro",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 179,
+    "name": "Torneira monocomando para lavatório",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 180,
+    "name": "Conjunto lixeira + porta-papel higiênico combinando",
+    "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
+    "claimed": false,
+    "category": "Banheiro"
+  },
+  {
+    "id": 181,
+    "name": "Máquina de lavar roupas 11kg",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 182,
+    "name": "Tanque de lavar roupas com gabinete",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 183,
+    "name": "Balde mop giratório com esfregão extra",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 184,
+    "name": "Vassoura elétrica / aspirador vertical 2 em 1",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 185,
+    "name": "Kit cestos organizadores para roupas (3 tamanhos)",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 186,
+    "name": "Prateleiras metálicas para lavanderia (jogo)",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 187,
+    "name": "Suporte de parede para vassouras e rodos",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 188,
+    "name": "Ferro vaporizador vertical portátil",
+    "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
+    "claimed": false,
+    "category": "Lavanderia"
+  },
+  {
+    "id": 189,
+    "name": "Rack para TV com nichos",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 190,
+    "name": "Painel para TV para sala de estar",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 191,
+    "name": "Aparador para hall de entrada",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 192,
+    "name": "Sapateira fechada multiuso",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 193,
+    "name": "Cadeira de escritório ergonômica",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 194,
+    "name": "Mesa de escritório para home office",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 195,
+    "name": "Poltrona decorativa para sala de estar",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 196,
+    "name": "Cabeceira estofada para cama box casal",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 197,
+    "name": "Espelho de corpo inteiro com moldura",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 198,
+    "name": "Banco baú estofado para pé da cama",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 199,
+    "name": "Nichos de parede decorativos (conjunto com 3 peças)",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 200,
+    "name": "Luminária de piso para sala de estar",
+    "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
+    "claimed": false,
+    "category": "Sala e Quarto"
+  },
+  {
+    "id": 201,
+    "name": "Cota para hospedagem da lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 202,
+    "name": "Cota para passagens aéreas da lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 203,
+    "name": "Passeio romântico de buggy na praia para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 204,
+    "name": "Jantar romântico à luz de velas para dois",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 205,
+    "name": "Ensaio fotográfico dos noivos na praia",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 206,
+    "name": "Day use em resort para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 207,
+    "name": "Cota para passeio de catamarã na lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 208,
+    "name": "Cesta de café da manhã especial para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 209,
+    "name": "Dia de spa com massagem para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 210,
+    "name": "Experiência gastronômica em restaurante sofisticado",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 211,
+    "name": "City tour guiado no destino da lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 212,
+    "name": "Cota para aluguel de carro na lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 213,
+    "name": "Passeio de barco ao pôr do sol para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 214,
+    "name": "Cota para pacote de bebidas especiais na lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 215,
+    "name": "Cota para upgrade de quarto na hospedagem",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 216,
+    "name": "Cota para passeios de aventura (trilhas, tirolesa)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 217,
+    "name": "Cota para seguro-viagem do casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 218,
+    "name": "Kit malas de viagem rígidas (2 malas + frasqueira)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 219,
+    "name": "Mochilas de viagem para o casal (par)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 220,
+    "name": "Necessaires personalizadas para o casal (2 peças)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 221,
+    "name": "Roupões personalizados para o casal (par)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 222,
+    "name": "Chinelos personalizados para o casal (par)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 224,
+    "name": "Caixa de experiências românticas (velas, pétalas, aromas)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 225,
+    "name": "Kit vinho e taças personalizadas para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 226,
+    "name": "Jantar romântico em casa ",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 227,
+    "name": "Noite em hotel na cidade para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 228,
+    "name": "Experiência de piquenique romântico ao ar livre",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 229,
+    "name": "Ingressos para show ou espetáculo para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 230,
+    "name": "Curso de dança para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 231,
+    "name": "Aula de culinária para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 232,
+    "name": "Assinatura de streaming de filmes para o casal (1 ano)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 233,
+    "name": "Assinatura de clube de vinhos (3 meses)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 234,
+    "name": "Assinatura de revelação de fotos do casal (fotolivro)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 235,
+    "name": "Álbum de fotos profissional da lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 236,
+    "name": "Quadro decorativo com foto do casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 237,
+    "name": "Kit perfumes para o casal (2 fragrâncias)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 238,
+    "name": "Kit bar em casa (coqueteleira e acessórios)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 239,
+    "name": "Caixa de chocolates finos para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 240,
+    "name": "Kit café especial para dois (cafeteira + cafés gourmet)",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 241,
+    "name": "Cota para café da manhã especial no hotel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 242,
+    "name": "Cota para passeio de buggy nas dunas com fotos",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 243,
+    "name": "Cota para passeio de mergulho para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 244,
+    "name": "Cota para passeio de helicóptero ou voo panorâmico",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 245,
+    "name": "Cota para fim de semana romântico em pousada",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 246,
+    "name": "Cota para jantar especial de aniversário de casamento",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 247,
+    "name": "Cota para workshop de fotografia para o casal",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 248,
+    "name": "Cota para sessão de massagem relaxante na viagem",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 249,
+    "name": "Cota livre para experiências na lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
+  },
+  {
+    "id": 250,
+    "name": "Cota para transporte local (táxi, apps) na lua de mel",
+    "image": "/uploads/gifts/1763858939906-foto1.png",
+    "claimed": false,
+    "category": "Lua de mel"
   }
 ]
