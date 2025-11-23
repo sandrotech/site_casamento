@@ -21,6 +21,14 @@ const fadeInUp = {
 
 export default function SupportSection({ supporters, pixKey, onOpenSupportModal }: Props) {
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(pixKey)}`
+  function withBase(src: string) {
+    const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+    if (!base) return src
+    if (/^https?:\/\//.test(src)) return src
+    if (src.startsWith(base)) return src
+    if (src.startsWith('/')) return `${base}${src}`
+    return `${base}/${src}`
+  }
   return (
     <motion.section
       className="py-20 px-4"
@@ -89,7 +97,7 @@ export default function SupportSection({ supporters, pixKey, onOpenSupportModal 
                 >
                   <div className="w-20 h-20 mx-auto mb-2 rounded-full overflow-hidden bg-muted">
                     {supporter.photo ? (
-                      <img src={supporter.photo || '/placeholder.svg'} alt={supporter.name} className="w-full h-full object-cover" />
+                      <img src={withBase(supporter.photo || '/placeholder.svg')} alt={supporter.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-primary/20">
                         <Heart className="w-8 h-8 text-primary" />

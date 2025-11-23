@@ -29,6 +29,14 @@ const fadeInUp = {
 }
 
 export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
+  function withBase(src: string) {
+    const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+    if (!base) return src
+    if (/^https?:\/\//.test(src)) return src
+    if (src.startsWith(base)) return src
+    if (src.startsWith('/')) return `${base}${src}`
+    return `${base}/${src}`
+  }
   const categories = ['Cozinha', 'Banheiro', 'Lavanderia', 'Sala e Quarto']
   const groups = categories
     .map((c) => ({ label: c, items: gifts.filter((g) => (g.category || '') === c) }))
@@ -75,7 +83,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                   >
                     <Card className="overflow-hidden border-border/50 shadow-md hover:shadow-xl transition-shadow">
                       <div className="aspect-square relative overflow-hidden bg-muted">
-                        <img src={gift.image || '/placeholder.svg'} alt={gift.name} className="w-full h-full object-cover" />
+                        <img src={withBase(gift.image || '/placeholder.svg')} alt={gift.name} className="w-full h-full object-cover" />
                         {gift.claimed && (
                           <>
                             <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
@@ -95,7 +103,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                                 transition={{ duration: 0.3 }}
                               >
                                 <img
-                                  src={gift.claimedByPhoto}
+                                  src={withBase(gift.claimedByPhoto)}
                                   alt={gift.claimedBy || gift.name}
                                   className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
                                 />

@@ -172,7 +172,7 @@ export default function GiftsAdminPage() {
                     <TableCell className="max-w-[260px]">
                       <div className="flex items-center gap-3">
                         {g.image ? (
-                          <img src={g.image} alt={g.name} className="w-14 h-14 rounded-md object-cover border" />
+                          <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${g.image}` : g.image)} alt={g.name} className="w-14 h-14 rounded-md object-cover border" />
                         ) : (
                           <div className="w-14 h-14 rounded-md border bg-muted" />
                         )}
