@@ -82,23 +82,13 @@ export default function WeddingPage() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const name = String(formData.get("name") || "")
-    const photo = formData.get("photo") as File | null
 
     if (selectedGift) {
-      let res: Response
-      if (photo && photo.size) {
-        const fd = new FormData()
-        fd.append("claimed", "true")
-        fd.append("claimedBy", name)
-        fd.append("claimedByPhoto", photo)
-        res = await fetch(`/api/gifts/${selectedGift.id}`, { method: "PUT", body: fd })
-      } else {
-        res = await fetch(`/api/gifts/${selectedGift.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ claimed: true, claimedBy: name }),
-        })
-      }
+      const res = await fetch(`/api/gifts/${selectedGift.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ claimed: true, claimedBy: name }),
+      })
       if (res.ok) {
         await loadGifts()
       }
@@ -114,9 +104,7 @@ export default function WeddingPage() {
     const fd = new FormData()
     fd.append("supportName", String(formData.get("supportName") || ""))
     const receipt = formData.get("receipt") as File | null
-    const photo = formData.get("supportPhoto") as File | null
     if (receipt) fd.append("receipt", receipt)
-    if (photo) fd.append("supportPhoto", photo)
     const res = await fetch("/api/supporters", { method: "POST", body: fd })
     if (res.ok) {
       const created = await res.json().catch(() => ({}))
@@ -127,7 +115,7 @@ export default function WeddingPage() {
         await fetch(`/api/gifts/${giftId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ claimed: true, claimedBy: name, claimedByPhoto: created?.photo }),
+          body: JSON.stringify({ claimed: true, claimedBy: name }),
         })
         await loadGifts()
       }
@@ -183,11 +171,7 @@ export default function WeddingPage() {
               <Label htmlFor="giftName">Nome Completo</Label>
               <Input id="giftName" name="name" placeholder="Seu nome completo" required className="bg-background w-full" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="giftPhoto">Foto (opcional)</Label>
-              <Input id="giftPhoto" name="photo" type="file" accept="image/*" className="bg-background w-full" />
-              <p className="text-xs text-muted-foreground">Sua foto aparecerá ao lado do presente</p>
-            </div>
+            
             <div className="flex flex-col md:flex-row gap-3">
               <Button type="button" variant="outline" onClick={() => setGiftModalOpen(false)} className="w-full md:flex-1">
                 Cancelar
@@ -234,11 +218,7 @@ export default function WeddingPage() {
                 <Label htmlFor="receipt">Comprovante PIX</Label>
                 <Input id="receipt" name="receipt" type="file" accept="image/*" required className="bg-background w-full" />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="supportPhoto">Sua Foto (opcional)</Label>
-                <Input id="supportPhoto" name="supportPhoto" type="file" accept="image/*" className="bg-background w-full" />
-                <p className="text-xs text-muted-foreground">Sua foto aparecerá na lista de apoiadores</p>
-              </div>
+              
             </div>
             <div className="flex flex-col md:flex-row gap-3">
               <Button type="button" variant="outline" onClick={() => setSupportModalOpen(false)} className="w-full md:flex-1">
