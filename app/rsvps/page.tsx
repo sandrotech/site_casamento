@@ -4,6 +4,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Button } from '@/components/ui/button'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
 import { motion } from 'framer-motion'
 
 type Rsvp = {
@@ -22,6 +24,8 @@ const fadeInUp = {
 export default function RsvpsPage() {
   const [data, setData] = useState<Rsvp[]>([])
   const [loading, setLoading] = useState(false)
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [confirmKey, setConfirmKey] = useState<string | null>(null)
 
   async function load() {
     setLoading(true)
@@ -29,6 +33,22 @@ export default function RsvpsPage() {
       const res = await fetch('/api/rsvp')
       const json = await res.json()
       setData(Array.isArray(json) ? json.reverse() : [])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function deleteRsvp(createdAt: string) {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/rsvp', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ createdAt }),
+      })
+      if (res.ok) {
+        await load()
+      }
     } finally {
       setLoading(false)
     }
@@ -65,6 +85,7 @@ export default function RsvpsPage() {
                   <TableHead>Acompanhantes</TableHead>
                   <TableHead>Mensagem</TableHead>
                   <TableHead>Quando</TableHead>
+                  <TableHead>Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -74,6 +95,18 @@ export default function RsvpsPage() {
                     <TableCell>{r.guests}</TableCell>
                     <TableCell className="max-w-[360px] truncate">{r.message}</TableCell>
                     <TableCell>{new Date(r.createdAt).toLocaleString()}</TableCell>
+                    <TableCell>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => {
+                          setConfirmKey(r.createdAt)
+                          setConfirmOpen(true)
+                        }}
+                      >
+                        Excluir
+                      </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -82,6 +115,28 @@ export default function RsvpsPage() {
           </CardContent>
         </Card>
       </div>
+      <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Excluir confirmação?</AlertDialogTitle>
+            <AlertDialogDescription>Esta ação não pode ser desfeita.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setConfirmOpen(false)}>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={async () => {
+                if (confirmKey) {
+                  await deleteRsvp(confirmKey)
+                }
+                setConfirmOpen(false)
+                setConfirmKey(null)
+              }}
+            >
+              Excluir
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </motion.section>
   )
 }

@@ -57,6 +57,8 @@ module.exports = mod;
 "use strict";
 
 __turbopack_context__.s([
+    "DELETE",
+    ()=>DELETE,
     "GET",
     ()=>GET,
     "POST",
@@ -152,6 +154,27 @@ async function POST(request) {
     await writeAll(items);
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(entry, {
         status: 201
+    });
+}
+async function DELETE(request) {
+    const body = await request.json().catch(()=>({}));
+    const id = Number(body?.id || 0);
+    if (!id) return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+        error: 'invalid_id'
+    }, {
+        status: 400
+    });
+    const items = await readAll();
+    const idx = items.findIndex((it)=>Number(it.id) === id);
+    if (idx === -1) return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+        error: 'not_found'
+    }, {
+        status: 404
+    });
+    items.splice(idx, 1);
+    await writeAll(items);
+    return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+        ok: true
     });
 }
 }),

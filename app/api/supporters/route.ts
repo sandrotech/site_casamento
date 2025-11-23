@@ -76,3 +76,15 @@ export async function POST(request: Request) {
   await writeAll(items)
   return NextResponse.json(entry, { status: 201 })
 }
+
+export async function DELETE(request: Request) {
+  const body = await request.json().catch(() => ({}))
+  const id = Number(body?.id || 0)
+  if (!id) return NextResponse.json({ error: 'invalid_id' }, { status: 400 })
+  const items = await readAll()
+  const idx = items.findIndex((it: any) => Number(it.id) === id)
+  if (idx === -1) return NextResponse.json({ error: 'not_found' }, { status: 404 })
+  items.splice(idx, 1)
+  await writeAll(items)
+  return NextResponse.json({ ok: true })
+}

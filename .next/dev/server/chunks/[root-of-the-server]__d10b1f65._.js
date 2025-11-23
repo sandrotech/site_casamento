@@ -57,6 +57,8 @@ module.exports = mod;
 "use strict";
 
 __turbopack_context__.s([
+    "DELETE",
+    ()=>DELETE,
     "GET",
     ()=>GET,
     "POST",
@@ -100,6 +102,18 @@ async function POST(request) {
     await __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["promises"].writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8");
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(entry, {
         status: 201
+    });
+}
+async function DELETE(request) {
+    await ensureFile();
+    const body = await request.json();
+    const key = String(body?.createdAt || "");
+    const buf = await __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["promises"].readFile(DATA_PATH, "utf-8");
+    const data = JSON.parse(buf);
+    const next = data.filter((it)=>String(it?.createdAt || "") !== key);
+    await __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["promises"].writeFile(DATA_PATH, JSON.stringify(next, null, 2), "utf-8");
+    return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+        ok: true
     });
 }
 }),

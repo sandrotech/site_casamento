@@ -28,7 +28,25 @@ export default function HeaderHero() {
           <Heart className="mx-auto h-16 w-16 text-primary fill-primary" />
         </motion.div>
         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight text-foreground">
-          Alessandro <span className="text-primary">&</span> Lorena
+          <motion.span
+            className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground"
+            initial={{ opacity: 0, y: 8, letterSpacing: '-0.02em' }}
+            animate={{ opacity: 1, y: 0, letterSpacing: '0em', backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'] }}
+            transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1], backgroundPosition: { duration: 8, repeat: Number.POSITIVE_INFINITY, ease: 'linear' } }}
+            style={{ backgroundSize: '200% 100%' }}
+          >
+            Lorena
+          </motion.span>
+          <span className="text-primary">&</span>
+          <motion.span
+            className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground"
+            initial={{ opacity: 0, y: 8, letterSpacing: '-0.02em' }}
+            animate={{ opacity: 1, y: 0, letterSpacing: '0em', backgroundPosition: ['100% 0%', '0% 0%', '100% 0%'] }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 0.61, 0.36, 1], backgroundPosition: { duration: 8, repeat: Number.POSITIVE_INFINITY, ease: 'linear' } }}
+            style={{ backgroundSize: '200% 100%' }}
+          >
+            Alessandro
+          </motion.span>
         </h1>
         <p className="text-xl md:text-2xl font-light text-muted-foreground">
           &quot;O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.&quot; 1 Coríntios 13:4
@@ -42,6 +60,7 @@ export default function HeaderHero() {
           <time dateTime="2026-01-17" className="text-lg md:text-xl text-foreground/80">
             17 de Janeiro de 2026
           </time>
+          <p className="text-sm md:text-base text-foreground/60 mt-1">às 15Hrs</p>
         </motion.div>
       </motion.div>
       <motion.div

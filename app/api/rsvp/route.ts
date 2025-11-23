@@ -35,3 +35,14 @@ export async function POST(request: Request) {
   await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
   return NextResponse.json(entry, { status: 201 })
 }
+
+export async function DELETE(request: Request) {
+  await ensureFile()
+  const body = await request.json()
+  const key = String(body?.createdAt || "")
+  const buf = await fs.readFile(DATA_PATH, "utf-8")
+  const data = JSON.parse(buf)
+  const next = data.filter((it: any) => String(it?.createdAt || "") !== key)
+  await fs.writeFile(DATA_PATH, JSON.stringify(next, null, 2), "utf-8")
+  return NextResponse.json({ ok: true })
+}

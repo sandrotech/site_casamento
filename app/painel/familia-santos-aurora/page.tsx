@@ -6,10 +6,11 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
 
 type Gift = { id: number; claimed: boolean }
 type Rsvp = { name: string }
-type Supporter = { id: number; name: string; photo?: string; createdAt?: string }
+type Supporter = { id: number; name: string; photo?: string; receipt?: string; createdAt?: string }
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -24,6 +25,8 @@ export default function AdminPage() {
   const [supporters, setSupporters] = useState<Supporter[]>([])
   const [receiptOpen, setReceiptOpen] = useState(false)
   const [receiptUrl, setReceiptUrl] = useState<string | null>(null)
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [confirmId, setConfirmId] = useState<number | null>(null)
 
   async function load() {
     setLoading(true)
@@ -46,6 +49,22 @@ export default function AdminPage() {
   useEffect(() => {
     load()
   }, [])
+
+  async function deleteSupporter(id: number) {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/supporters', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      })
+      if (res.ok) {
+        await load()
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <motion.section className="py-20 px-4" initial="initial" animate="animate" variants={fadeInUp}>
@@ -131,11 +150,18 @@ export default function AdminPage() {
                       </div>
                       <p className="text-sm text-foreground font-medium truncate">{s.name}</p>
                       {s.createdAt && <p className="text-xs text-muted-foreground">{new Date(s.createdAt).toLocaleDateString()}</p>}
-                      {s.receipt && (
-                        <div className="mt-2">
+                      <div className="mt-2 flex items-center justify-center gap-2">
+                        {s.receipt && (
                           <Button variant="outline" size="sm" onClick={() => { setReceiptUrl(s.receipt as string); setReceiptOpen(true) }}>Ver comprovante</Button>
-                        </div>
-                      )}
+                        )}
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => { setConfirmId(s.id); setConfirmOpen(true) }}
+                        >
+                          Excluir
+                        </Button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -154,6 +180,29 @@ export default function AdminPage() {
             )}
           </DialogContent>
         </Dialog>
+
+        <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Excluir apoio?</AlertDialogTitle>
+              <AlertDialogDescription>Esta ação não pode ser desfeita.</AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => setConfirmOpen(false)}>Cancelar</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={async () => {
+                  if (confirmId != null) {
+                    await deleteSupporter(confirmId)
+                  }
+                  setConfirmOpen(false)
+                  setConfirmId(null)
+                }}
+              >
+                Excluir
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </motion.section>
   )

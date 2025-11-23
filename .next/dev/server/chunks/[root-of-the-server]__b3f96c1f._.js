@@ -138,11 +138,16 @@ async function PUT(request, { params }) {
         };
     } else {
         const body = await request.json();
-        items[idx] = {
+        const next = {
             ...items[idx],
             ...body,
             id
         };
+        if (body && Object.prototype.hasOwnProperty.call(body, 'claimed') && body.claimed === false) {
+            delete next.claimedBy;
+            delete next.claimedByPhoto;
+        }
+        items[idx] = next;
     }
     await writeAll(items);
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(items[idx]);

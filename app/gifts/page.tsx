@@ -159,6 +159,7 @@ export default function GiftsAdminPage() {
                   <TableHead>Nome</TableHead>
                   <TableHead>Imagem</TableHead>
                   <TableHead>Status</TableHead>
+                  <TableHead>Doador</TableHead>
                   <TableHead>Ações</TableHead>
                 </TableRow>
               </TableHeader>
@@ -172,8 +173,28 @@ export default function GiftsAdminPage() {
                       <Input key={rowKeys[g.id] || 0} type="file" accept="image/*" onChange={(e) => setUploads((u) => ({ ...u, [g.id]: e.target.files?.[0] || null }))} />
                     </TableCell>
                     <TableCell>{g.claimed ? 'Escolhido' : 'Disponível'}</TableCell>
+                    <TableCell>
+                      {g.claimedBy ? (
+                        <div className="flex items-center gap-2">
+                          {g.claimedByPhoto && (
+                            <img src={g.claimedByPhoto} alt={g.claimedBy || 'Doador'} className="w-8 h-8 rounded-full object-cover border" />
+                          )}
+                          <span className="text-sm">{g.claimedBy}</span>
+                        </div>
+                      ) : (
+                        <span className="text-muted-foreground text-sm">—</span>
+                      )}
+                    </TableCell>
                     <TableCell className="flex gap-2">
                       <Button variant="outline" onClick={() => updateGift(g.id, { name: g.name }, uploads[g.id] || null)}>Salvar</Button>
+                      {g.claimed && (
+                        <Button
+                          variant="outline"
+                          onClick={() => updateGift(g.id, { claimed: false })}
+                        >
+                          Liberar
+                        </Button>
+                      )}
                       <Button
                         variant="destructive"
                         disabled={g.claimed}

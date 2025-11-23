@@ -61,7 +61,12 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     items[idx] = { ...items[idx], ...patch, id }
   } else {
     const body = await request.json()
-    items[idx] = { ...items[idx], ...body, id }
+    const next = { ...items[idx], ...body, id }
+    if (body && Object.prototype.hasOwnProperty.call(body, 'claimed') && body.claimed === false) {
+      delete next.claimedBy
+      delete next.claimedByPhoto
+    }
+    items[idx] = next
   }
   await writeAll(items)
   return NextResponse.json(items[idx])
