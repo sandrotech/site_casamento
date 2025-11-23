@@ -170,7 +170,14 @@ export default function GiftsAdminPage() {
                       <Input value={g.name} onChange={(e) => setItems((prev) => prev.map((it) => it.id === g.id ? { ...it, name: e.target.value } : it))} />
                     </TableCell>
                     <TableCell className="max-w-[260px]">
-                      <Input key={rowKeys[g.id] || 0} type="file" accept="image/*" onChange={(e) => setUploads((u) => ({ ...u, [g.id]: e.target.files?.[0] || null }))} />
+                      <div className="flex items-center gap-3">
+                        {g.image ? (
+                          <img src={g.image} alt={g.name} className="w-14 h-14 rounded-md object-cover border" />
+                        ) : (
+                          <div className="w-14 h-14 rounded-md border bg-muted" />
+                        )}
+                        <Input key={rowKeys[g.id] || 0} type="file" accept="image/*" onChange={(e) => setUploads((u) => ({ ...u, [g.id]: e.target.files?.[0] || null }))} />
+                      </div>
                     </TableCell>
                     <TableCell>{g.claimed ? 'Escolhido' : 'Disponível'}</TableCell>
                     <TableCell>
