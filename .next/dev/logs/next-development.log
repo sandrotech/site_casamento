@@ -414,3 +414,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 [17:59:02.110] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
 [17:59:02.110] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://127.0.0.1:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://127.0.0.1:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763917477464}
 [17:59:40.708] Browser ERROR   Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+[18:07:01.837] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[18:07:04.760] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[18:07:05.302] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[18:07:05.302] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[18:07:05.303] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/?ide_webview_request_time=1763861034930 color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/?ide_webview_request_time=1763861034930","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763917960654}

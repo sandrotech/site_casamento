@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
 
@@ -40,13 +41,22 @@ export async function POST(request: Request) {
 
   async function saveFile(file: File, dir: string) {
     await fs.mkdir(dir, { recursive: true })
-    const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
-    const fname = `${Date.now()}-${safe}`
+    const ct = (file.type || "").toLowerCase()
     const ab = await file.arrayBuffer()
     const buf = Buffer.from(ab)
-    const full = path.join(dir, fname)
-    await fs.writeFile(full, buf)
-    return fname
+    const base = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
+    let outName = `${Date.now()}-${base}`
+    let outPath = path.join(dir, outName)
+    try {
+      const pipeline = sharp(buf, { animated: true }).rotate()
+      const jpeg = await pipeline.jpeg({ quality: 82 }).toBuffer()
+      outName = `${Date.now()}-${base.replace(/\.[^.]+$/, "")}.jpg`
+      outPath = path.join(dir, outName)
+      await fs.writeFile(outPath, jpeg)
+    } catch {
+      await fs.writeFile(outPath, buf)
+    }
+    return outName
   }
 
   if (ct.includes("multipart/form-data")) {

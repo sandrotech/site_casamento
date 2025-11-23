@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server"
+import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
 
@@ -36,22 +37,34 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
     const imageFile = form.get("image") as File | null
     if (imageFile && typeof imageFile === "object" && imageFile.size) {
       await fs.mkdir(UPLOAD_DIR, { recursive: true })
-      const safeName = imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "_")
-      const filename = `${Date.now()}-${safeName}`
-      const arrayBuffer = await imageFile.arrayBuffer()
-      const buffer = Buffer.from(arrayBuffer)
-      await fs.writeFile(path.join(UPLOAD_DIR, filename), buffer)
-      patch.image = `/uploads/gifts/${filename}`
+      const safeBase = imageFile.name.replace(/[^a-zA-Z0-9._-]/g, "_")
+      const raw = Buffer.from(await imageFile.arrayBuffer())
+      try {
+        const processed = await sharp(raw, { animated: true }).rotate().jpeg({ quality: 82 }).toBuffer()
+        const filename = `${Date.now()}-${safeBase.replace(/\.[^.]+$/, "")}.jpg`
+        await fs.writeFile(path.join(UPLOAD_DIR, filename), processed)
+        patch.image = `/uploads/gifts/${filename}`
+      } catch {
+        const filename = `${Date.now()}-${safeBase}`
+        await fs.writeFile(path.join(UPLOAD_DIR, filename), raw)
+        patch.image = `/uploads/gifts/${filename}`
+      }
     }
     const claimedByPhotoFile = form.get("claimedByPhoto") as File | null
     if (claimedByPhotoFile && typeof claimedByPhotoFile === "object" && claimedByPhotoFile.size) {
       await fs.mkdir(UPLOAD_DIR, { recursive: true })
-      const safeName = claimedByPhotoFile.name.replace(/[^a-zA-Z0-9._-]/g, "_")
-      const filename = `${Date.now()}-${safeName}`
-      const arrayBuffer = await claimedByPhotoFile.arrayBuffer()
-      const buffer = Buffer.from(arrayBuffer)
-      await fs.writeFile(path.join(UPLOAD_DIR, filename), buffer)
-      patch.claimedByPhoto = `/uploads/gifts/${filename}`
+      const safeBase = claimedByPhotoFile.name.replace(/[^a-zA-Z0-9._-]/g, "_")
+      const raw = Buffer.from(await claimedByPhotoFile.arrayBuffer())
+      try {
+        const processed = await sharp(raw, { animated: true }).rotate().jpeg({ quality: 82 }).toBuffer()
+        const filename = `${Date.now()}-${safeBase.replace(/\.[^.]+$/, "")}.jpg`
+        await fs.writeFile(path.join(UPLOAD_DIR, filename), processed)
+        patch.claimedByPhoto = `/uploads/gifts/${filename}`
+      } catch {
+        const filename = `${Date.now()}-${safeBase}`
+        await fs.writeFile(path.join(UPLOAD_DIR, filename), raw)
+        patch.claimedByPhoto = `/uploads/gifts/${filename}`
+      }
     }
     items[idx] = { ...items[idx], ...patch, id }
   } else {
