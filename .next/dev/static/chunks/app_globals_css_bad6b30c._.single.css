@@ -1060,6 +1060,14 @@
     min-height: calc(var(--spacing) * 4);
   }
 
+  .min-h-9 {
+    min-height: calc(var(--spacing) * 9);
+  }
+
+  .min-h-11 {
+    min-height: calc(var(--spacing) * 11);
+  }
+
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
   }
@@ -1276,8 +1284,16 @@
     min-width: var(--radix-select-trigger-width);
   }
 
+  .min-w-max {
+    min-width: max-content;
+  }
+
   .flex-1 {
     flex: 1;
+  }
+
+  .flex-none {
+    flex: none;
   }
 
   .flex-shrink-0, .shrink-0 {
@@ -1466,6 +1482,10 @@
 
   .flex-row {
     flex-direction: row;
+  }
+
+  .flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .flex-wrap {
@@ -2107,6 +2127,10 @@
 
   .p-\[3px\] {
     padding: 3px;
+  }
+
+  .p-\[6px\] {
+    padding: 6px;
   }
 
   .p-px {
@@ -4647,8 +4671,20 @@
   }
 
   @media (min-width: 48rem) {
+    .md\:w-fit {
+      width: fit-content;
+    }
+  }
+
+  @media (min-width: 48rem) {
     .md\:max-w-\[420px\] {
       max-width: 420px;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .md\:flex-1 {
+      flex: 1;
     }
   }
 
@@ -4695,6 +4731,12 @@
   }
 
   @media (min-width: 48rem) {
+    .md\:gap-2 {
+      gap: calc(var(--spacing) * 2);
+    }
+  }
+
+  @media (min-width: 48rem) {
     .md\:gap-4 {
       gap: calc(var(--spacing) * 4);
     }
@@ -4703,6 +4745,14 @@
   @media (min-width: 48rem) {
     .md\:gap-10 {
       gap: calc(var(--spacing) * 10);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    :where(.md\:space-y-6 > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
 
@@ -4721,6 +4771,18 @@
   @media (min-width: 48rem) {
     .md\:p-12 {
       padding: calc(var(--spacing) * 12);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .md\:px-3 {
+      padding-inline: calc(var(--spacing) * 3);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .md\:py-2 {
+      padding-block: calc(var(--spacing) * 2);
     }
   }
 

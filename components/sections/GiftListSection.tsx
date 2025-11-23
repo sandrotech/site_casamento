@@ -51,14 +51,16 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
           <p className="text-muted-foreground text-lg">Escolha um presente especial para nós</p>
         </div>
         <Tabs defaultValue={initialTab} className="space-y-6">
-          <div className="flex justify-center">
-            <TabsList className="bg-background/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur-sm shadow-lg ring-1 ring-border rounded-full p-1 h-11">
-              {tabs.map((t) => (
-                <TabsTrigger key={t.label} value={t.label} className="rounded-full px-3 py-2 transition-all data-[state=active]:shadow-md data-[state=active]:scale-[1.02] hover:scale-[1.01]">
-                  {t.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+          <div className="md:flex md:justify-center">
+            <div className="w-full px-2">
+              <TabsList className="bg-background/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur-sm shadow-lg ring-1 ring-border rounded-full p-2 min-h-11 inline-flex gap-1 md:gap-2 flex-nowrap">
+                {tabs.map((t) => (
+                  <TabsTrigger key={t.label} value={t.label} className="flex-1 min-w-0 rounded-full px-2.5 py-1.5 md:px-3 md:py-2 transition-all data-[state=active]:shadow-md data-[state=active]:scale-[1.02] hover:scale-[1.01]">
+                    {t.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
           </div>
           {tabs.map((t) => (
             <TabsContent key={t.label} value={t.label}>

@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextResponse, NextRequest } from "next/server"
 import { promises as fs } from "fs"
 import path from "path"
 
@@ -19,14 +19,9 @@ async function writeAll(items: any[]) {
   await fs.writeFile(DATA_PATH, JSON.stringify(items, null, 2), "utf-8")
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
-  let raw = params?.id
-  if (!raw) {
-    try {
-      const url = new URL(request.url)
-      raw = url.pathname.split('/').filter(Boolean).pop() || ''
-    } catch {}
-  }
+export async function PUT(request: NextRequest, context: { params: Promise<{ id: string }> }) {
+  const { id: idParam } = await context.params
+  let raw = idParam
   let id = parseInt(String(raw).replace(/[^0-9]/g, ''), 10)
   const contentType = request.headers.get("content-type") || ""
   const items = await readAll()
@@ -72,8 +67,9 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   return NextResponse.json(items[idx])
 }
 
-export async function DELETE(_request: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id)
+export async function DELETE(_request: NextRequest, context: { params: Promise<{ id: string }> }) {
+  const { id: idParam } = await context.params
+  const id = Number(idParam)
   const items = await readAll()
   const idx = items.findIndex((g: any) => Number(g.id) === id)
   if (idx === -1) return NextResponse.json({ error: "not_found" }, { status: 404 })

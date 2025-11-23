@@ -22,7 +22,7 @@ interface Supporter {
   createdAt?: string
 }
 
- 
+
 
 // Substitua essa constante pelo embed da ROTA gerado no Google Maps
 // (Google Maps → Traçar rota → Compartilhar → Incorporar mapa)
@@ -167,7 +167,7 @@ export default function WeddingPage() {
           <p className="font-serif text-xl md:text-2xl text-foreground italic">
             &quot;O amor é paciente, o amor é bondoso&quot;
           </p>
-          <p className="text-muted-foreground">Alessandro &amp; Lorena • 2025</p>
+          <p className="text-muted-foreground">Lorena &amp; Alessandro • 2026</p>
         </motion.div>
       </footer>
 
@@ -178,21 +178,21 @@ export default function WeddingPage() {
             <DialogTitle className="font-serif text-2xl">Confirmar Presente</DialogTitle>
             <DialogDescription>Preencha seus dados para confirmar o presente: {selectedGift?.name}</DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleGiftSubmit} className="space-y-4">
+          <form onSubmit={handleGiftSubmit} className="space-y-4 md:space-y-6">
             <div className="space-y-2">
               <Label htmlFor="giftName">Nome Completo</Label>
-              <Input id="giftName" name="name" placeholder="Seu nome completo" required className="bg-background" />
+              <Input id="giftName" name="name" placeholder="Seu nome completo" required className="bg-background w-full" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="giftPhoto">Foto (opcional)</Label>
-              <Input id="giftPhoto" name="photo" type="file" accept="image/*" className="bg-background" />
+              <Input id="giftPhoto" name="photo" type="file" accept="image/*" className="bg-background w-full" />
               <p className="text-xs text-muted-foreground">Sua foto aparecerá ao lado do presente</p>
             </div>
-            <div className="flex gap-3">
-              <Button type="button" variant="outline" onClick={() => setGiftModalOpen(false)} className="flex-1">
+            <div className="flex flex-col md:flex-row gap-3">
+              <Button type="button" variant="outline" onClick={() => setGiftModalOpen(false)} className="w-full md:flex-1">
                 Cancelar
               </Button>
-              <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button type="submit" className="w-full md:flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
                 Confirmar
               </Button>
             </div>
@@ -200,47 +200,51 @@ export default function WeddingPage() {
         </DialogContent>
       </Dialog>
 
-  {/* Support Modal */}
+      {/* Support Modal */}
       <Dialog open={supportModalOpen} onOpenChange={setSupportModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="font-serif text-2xl">Enviar Comprovante</DialogTitle>
             <DialogDescription>Envie seu comprovante de PIX e deixe seu nome</DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleSupportSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="supportName">Nome Completo</Label>
-              <Input
-                id="supportName"
-                name="supportName"
-                placeholder="Seu nome completo"
-                required
-                className="bg-background"
-              />
+          <form onSubmit={handleSupportSubmit} className="space-y-4 md:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="supportName">Nome Completo</Label>
+                <Input
+                  id="supportName"
+                  name="supportName"
+                  placeholder="Seu nome completo"
+                  required
+                  className="bg-background w-full"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="giftId">Referente ao Presente (opcional)</Label>
+                <select id="giftId" name="giftId" className="bg-background border border-border rounded-md h-9 px-3 w-full">
+                  <option value="">Selecionar...</option>
+                  {gifts.filter((g) => !g.claimed).map((g) => (
+                    <option key={g.id} value={g.id} selected={supportSelectedGiftId === g.id}>{g.name}</option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="giftId">Referente ao Presente (opcional)</Label>
-              <select id="giftId" name="giftId" className="bg-background border border-border rounded-md h-9 px-3">
-                <option value="">Selecionar...</option>
-                {gifts.filter((g) => !g.claimed).map((g) => (
-                  <option key={g.id} value={g.id} selected={supportSelectedGiftId === g.id}>{g.name}</option>
-                ))}
-              </select>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="receipt">Comprovante PIX</Label>
+                <Input id="receipt" name="receipt" type="file" accept="image/*" required className="bg-background w-full" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="supportPhoto">Sua Foto (opcional)</Label>
+                <Input id="supportPhoto" name="supportPhoto" type="file" accept="image/*" className="bg-background w-full" />
+                <p className="text-xs text-muted-foreground">Sua foto aparecerá na lista de apoiadores</p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="receipt">Comprovante PIX</Label>
-              <Input id="receipt" name="receipt" type="file" accept="image/*" required className="bg-background" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="supportPhoto">Sua Foto (opcional)</Label>
-              <Input id="supportPhoto" name="supportPhoto" type="file" accept="image/*" className="bg-background" />
-              <p className="text-xs text-muted-foreground">Sua foto aparecerá na lista de apoiadores</p>
-            </div>
-            <div className="flex gap-3">
-              <Button type="button" variant="outline" onClick={() => setSupportModalOpen(false)} className="flex-1">
+            <div className="flex flex-col md:flex-row gap-3">
+              <Button type="button" variant="outline" onClick={() => setSupportModalOpen(false)} className="w-full md:flex-1">
                 Cancelar
               </Button>
-              <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button type="submit" className="w-full md:flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
                 Enviar
               </Button>
             </div>
