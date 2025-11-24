@@ -35,6 +35,23 @@ const PIX_KEY = "45585cb7-2069-4a3b-a53a-255eb3fa6a9b"
 
 export default function WeddingPage() {
   const { toast } = useToast()
+  const EVENT_DATE = new Date("2026-01-17T15:00:00-03:00")
+  const [countdown, setCountdown] = useState<{ d: number; h: number; m: number; s: number; over: boolean }>({ d: 0, h: 0, m: 0, s: 0, over: false })
+  useEffect(() => {
+    const calc = () => {
+      const now = new Date().getTime()
+      const target = EVENT_DATE.getTime()
+      const diff = Math.max(0, target - now)
+      const d = Math.floor(diff / 86400000)
+      const h = Math.floor((diff % 86400000) / 3600000)
+      const m = Math.floor((diff % 3600000) / 60000)
+      const s = Math.floor((diff % 60000) / 1000)
+      setCountdown({ d, h, m, s, over: diff === 0 })
+    }
+    calc()
+    const id = setInterval(calc, 1000)
+    return () => clearInterval(id)
+  }, [])
   const [selectedGift, setSelectedGift] = useState<{
     id: number
     name: string
@@ -132,6 +149,33 @@ export default function WeddingPage() {
     <div className="min-h-screen">
       <HeaderHero />
 
+      <motion.section
+        className="px-4 py-12"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contagem regressiva</p>
+          <div className="flex items-center justify-center gap-3">
+            <div className="bg-muted/70 ring-1 ring-border rounded-full px-4 py-3 shadow-sm">
+              <span className="font-mono text-foreground text-lg">{String(countdown.d).padStart(2, "0")}d</span>
+            </div>
+            <div className="bg-muted/70 ring-1 ring-border rounded-full px-4 py-3 shadow-sm">
+              <span className="font-mono text-foreground text-lg">{String(countdown.h).padStart(2, "0")}h</span>
+            </div>
+            <div className="bg-muted/70 ring-1 ring-border rounded-full px-4 py-3 shadow-sm">
+              <span className="font-mono text-foreground text-lg">{String(countdown.m).padStart(2, "0")}m</span>
+            </div>
+            <div className="bg-muted/70 ring-1 ring-border rounded-full px-4 py-3 shadow-sm">
+              <span className="font-mono text-foreground text-lg">{String(countdown.s).padStart(2, "0")}s</span>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground">17/01/2026 às 15:00</p>
+        </div>
+      </motion.section>
+
       <HistorySection />
 
 
@@ -174,7 +218,7 @@ export default function WeddingPage() {
               <Label htmlFor="giftName">Nome Completo</Label>
               <Input id="giftName" name="name" placeholder="Seu nome completo" required className="bg-background w-full" />
             </div>
-            
+
             <div className="flex flex-col md:flex-row gap-3">
               <Button type="button" variant="outline" onClick={() => setGiftModalOpen(false)} className="w-full md:flex-1">
                 Cancelar
@@ -212,7 +256,7 @@ export default function WeddingPage() {
                 <Label htmlFor="receipt">Comprovante PIX</Label>
                 <Input id="receipt" name="receipt" type="file" accept="image/*" required className="bg-background w-full" />
               </div>
-              
+
             </div>
             <div className="flex flex-col md:flex-row gap-3">
               <Button type="button" variant="outline" onClick={() => setSupportModalOpen(false)} className="w-full md:flex-1">
