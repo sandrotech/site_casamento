@@ -152,7 +152,12 @@ export default function AdminPage() {
                       {s.createdAt && <p className="text-xs text-muted-foreground">{new Date(s.createdAt).toLocaleDateString()}</p>}
                       <div className="mt-2 flex items-center justify-center gap-2">
                         {s.receipt && (
-                          <Button variant="outline" size="sm" onClick={() => { setReceiptUrl(s.receipt as string); setReceiptOpen(true) }}>Ver comprovante</Button>
+                          <>
+                            <Button variant="outline" size="sm" onClick={() => { setReceiptUrl(s.receipt as string); setReceiptOpen(true) }}>Ver comprovante</Button>
+                            <Button asChild variant="outline" size="sm">
+                              <a href={s.receipt} download>Baixar</a>
+                            </Button>
+                          </>
                         )}
                         <Button
                           variant="destructive"
