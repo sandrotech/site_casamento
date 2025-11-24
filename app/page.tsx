@@ -172,7 +172,6 @@ export default function WeddingPage() {
               <span className="font-mono text-foreground text-lg">{String(countdown.s).padStart(2, "0")}s</span>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">17/01/2026 às 15:00</p>
         </div>
       </motion.section>
 

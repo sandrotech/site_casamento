@@ -91,19 +91,19 @@ export default function HistorySection() {
         </div>
 
         <div className="mt-12">
-          <p className="text-sm tracking-[0.25em] uppercase text-center text-muted-foreground mb-4">Pré Wedding</p>
+          <p className="text-sm tracking-[0.25em] uppercase text-center text-muted-foreground mb-4">Pré-wedding</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.02 }} transition={{ duration: 0.25 }}>
-              <img src="/fotos/pre-wedding-1.jpg" alt="Pré Wedding 1" className="w-full h-full object-cover grayscale hover:grayscale-0 transition" />
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
+              <img src="/fotos/foto8.jpeg" alt="Pedido de casamento 1" className="w-full h-full object-cover" />
             </motion.div>
-            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.02 }} transition={{ duration: 0.25, delay: 0.03 }}>
-              <img src="/fotos/pre-wedding-2.jpg" alt="Pré Wedding 2" className="w-full h-full object-cover grayscale hover:grayscale-0 transition" />
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.03 }}>
+              <img src="/fotos/foto9.jfif" alt="Pedido de casamento 2" className="w-full h-full object-cover" />
             </motion.div>
-            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.02 }} transition={{ duration: 0.25, delay: 0.06 }}>
-              <img src="/fotos/pre-wedding-3.jpg" alt="Pré Wedding 3" className="w-full h-full object-cover grayscale hover:grayscale-0 transition" />
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.06 }}>
+              <img src="/fotos/foto10.jfif" alt="Pedido de casamento 3" className="w-full h-full object-cover" />
             </motion.div>
-            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.02 }} transition={{ duration: 0.25, delay: 0.09 }}>
-              <img src="/fotos/pre-wedding-4.jpg" alt="Pré Wedding 4" className="w-full h-full object-cover grayscale hover:grayscale-0 transition" />
+            <motion.div className="aspect-square rounded-xl overflow-hidden bg-muted" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25, delay: 0.09 }}>
+              <img src="/fotos/foto11.jfif" alt="Pedido de casamento 4" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>
