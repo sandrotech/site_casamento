@@ -141,10 +141,10 @@ export default function AdminPage() {
                     <div key={s.id} className="text-center">
                       <div className="w-20 h-20 mx-auto mb-2 rounded-full overflow-hidden bg-muted">
                         {s.photo ? (
-                          <img src={s.photo} alt={s.name} className="w-full h-full object-cover" />
+                          <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${s.photo}` : s.photo)} alt={s.name} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-primary/20">
-                            <span className="text-primary font-semibold text-sm">{s.name.slice(0,1).toUpperCase()}</span>
+                            <span className="text-primary font-semibold text-sm">{s.name.slice(0, 1).toUpperCase()}</span>
                           </div>
                         )}
                       </div>
@@ -155,7 +155,7 @@ export default function AdminPage() {
                           <>
                             <Button variant="outline" size="sm" onClick={() => { setReceiptUrl(s.receipt as string); setReceiptOpen(true) }}>Ver comprovante</Button>
                             <Button asChild variant="outline" size="sm">
-                              <a href={s.receipt} download>Baixar</a>
+                              <a href={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${s.receipt}` : s.receipt)} download>Baixar</a>
                             </Button>
                           </>
                         )}
@@ -181,7 +181,7 @@ export default function AdminPage() {
               <DialogTitle className="font-serif text-2xl">Comprovante</DialogTitle>
             </DialogHeader>
             {receiptUrl && (
-              <img src={receiptUrl} alt="Comprovante de apoio" className="w-full h-auto rounded-md border border-border" />
+              <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${receiptUrl}` : receiptUrl)} alt="Comprovante de apoio" className="w-full h-auto rounded-md border border-border" />
             )}
           </DialogContent>
         </Dialog>
