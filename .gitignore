@@ -1,1 +1,9 @@
 node_modules
+.next
+.turbo
+out
+.vercel
+public/uploads/
+*.log
+dist
+build

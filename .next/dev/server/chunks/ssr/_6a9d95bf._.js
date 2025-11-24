@@ -1064,14 +1064,38 @@ function GiftsAdminPage() {
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                                             className: "max-w-[260px]",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                                type: "file",
-                                                                accept: "image/*",
-                                                                onChange: (e)=>setUploads((u)=>({
-                                                                            ...u,
-                                                                            [g.id]: e.target.files?.[0] || null
-                                                                        }))
-                                                            }, rowKeys[g.id] || 0, false, {
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex items-center gap-3",
+                                                                children: [
+                                                                    g.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                        src: process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${g.image}` : g.image,
+                                                                        alt: g.name,
+                                                                        className: "w-14 h-14 rounded-md object-cover border"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/gifts/page.tsx",
+                                                                        lineNumber: 175,
+                                                                        columnNumber: 27
+                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "w-14 h-14 rounded-md border bg-muted"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/gifts/page.tsx",
+                                                                        lineNumber: 177,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                                        type: "file",
+                                                                        accept: "image/*",
+                                                                        onChange: (e)=>setUploads((u)=>({
+                                                                                    ...u,
+                                                                                    [g.id]: e.target.files?.[0] || null
+                                                                                }))
+                                                                    }, rowKeys[g.id] || 0, false, {
+                                                                        fileName: "[project]/app/gifts/page.tsx",
+                                                                        lineNumber: 179,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/app/gifts/page.tsx",
                                                                 lineNumber: 173,
                                                                 columnNumber: 23
@@ -1085,7 +1109,7 @@ function GiftsAdminPage() {
                                                             children: g.claimed ? 'Escolhido' : 'Disponível'
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/gifts/page.tsx",
-                                                            lineNumber: 175,
+                                                            lineNumber: 182,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1098,7 +1122,7 @@ function GiftsAdminPage() {
                                                                         className: "w-8 h-8 rounded-full object-cover border"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/gifts/page.tsx",
-                                                                        lineNumber: 180,
+                                                                        lineNumber: 187,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1106,25 +1130,25 @@ function GiftsAdminPage() {
                                                                         children: g.claimedBy
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/gifts/page.tsx",
-                                                                        lineNumber: 182,
+                                                                        lineNumber: 189,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/gifts/page.tsx",
-                                                                lineNumber: 178,
+                                                                lineNumber: 185,
                                                                 columnNumber: 25
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "text-muted-foreground text-sm",
                                                                 children: "—"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/gifts/page.tsx",
-                                                                lineNumber: 185,
+                                                                lineNumber: 192,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/gifts/page.tsx",
-                                                            lineNumber: 176,
+                                                            lineNumber: 183,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1138,7 +1162,7 @@ function GiftsAdminPage() {
                                                                     children: "Salvar"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/gifts/page.tsx",
-                                                                    lineNumber: 189,
+                                                                    lineNumber: 196,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 g.claimed && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1149,7 +1173,7 @@ function GiftsAdminPage() {
                                                                     children: "Liberar"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/gifts/page.tsx",
-                                                                    lineNumber: 191,
+                                                                    lineNumber: 198,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1162,13 +1186,13 @@ function GiftsAdminPage() {
                                                                     children: "Excluir"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/gifts/page.tsx",
-                                                                    lineNumber: 198,
+                                                                    lineNumber: 205,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/gifts/page.tsx",
-                                                            lineNumber: 188,
+                                                            lineNumber: 195,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
@@ -1186,7 +1210,7 @@ function GiftsAdminPage() {
                                             children: items.length === 0 ? 'Nenhum presente cadastrado' : `${items.length} presentes`
                                         }, void 0, false, {
                                             fileName: "[project]/app/gifts/page.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 219,
                                             columnNumber: 15
                                         }, this)
                                     ]
@@ -1223,20 +1247,20 @@ function GiftsAdminPage() {
                                     children: "Excluir presente?"
                                 }, void 0, false, {
                                     fileName: "[project]/app/gifts/page.tsx",
-                                    lineNumber: 220,
+                                    lineNumber: 227,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDialogDescription"], {
                                     children: "Esta ação não pode ser desfeita."
                                 }, void 0, false, {
                                     fileName: "[project]/app/gifts/page.tsx",
-                                    lineNumber: 221,
+                                    lineNumber: 228,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/gifts/page.tsx",
-                            lineNumber: 219,
+                            lineNumber: 226,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
@@ -1246,7 +1270,7 @@ function GiftsAdminPage() {
                                     children: "Cancelar"
                                 }, void 0, false, {
                                     fileName: "[project]/app/gifts/page.tsx",
-                                    lineNumber: 224,
+                                    lineNumber: 231,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AlertDialogAction"], {
@@ -1260,24 +1284,24 @@ function GiftsAdminPage() {
                                     children: "Excluir"
                                 }, void 0, false, {
                                     fileName: "[project]/app/gifts/page.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/gifts/page.tsx",
-                            lineNumber: 223,
+                            lineNumber: 230,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/gifts/page.tsx",
-                    lineNumber: 218,
+                    lineNumber: 225,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/gifts/page.tsx",
-                lineNumber: 217,
+                lineNumber: 224,
                 columnNumber: 7
             }, this)
         ]

@@ -100,7 +100,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                           <Button onClick={() => onClaim(gift)} disabled={gift.claimed} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50">
                             {gift.claimed ? 'Indisponível' : 'Vou dar este presente'}
                           </Button>
-                          <Button onClick={() => onPix?.(gift)} variant="outline" className="w-full">
+                          <Button onClick={() => onPix?.(gift)} variant="outline" className="w-full" disabled={gift.claimed}>
                             Contribuir via PIX
                           </Button>
                         </div>

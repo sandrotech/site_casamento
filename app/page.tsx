@@ -13,6 +13,7 @@ import RsvpSection from "@/components/sections/RsvpSection"
 import GiftListSection from "@/components/sections/GiftListSection"
 import SupportSection from "@/components/sections/SupportSection"
 import WeddingLocationsSection from "@/components/sections/WeddingLocationsSection"
+import { useToast } from "@/hooks/use-toast"
 
 interface Supporter {
   id: number
@@ -33,6 +34,7 @@ const PIX_KEY = "45585cb7-2069-4a3b-a53a-255eb3fa6a9b"
 
 
 export default function WeddingPage() {
+  const { toast } = useToast()
   const [selectedGift, setSelectedGift] = useState<{
     id: number
     name: string
@@ -91,6 +93,7 @@ export default function WeddingPage() {
       })
       if (res.ok) {
         await loadGifts()
+        toast({ title: "Presente confirmado em seu nome, obrigado!" })
       }
     }
 
@@ -192,7 +195,7 @@ export default function WeddingPage() {
             <DialogDescription>Envie seu comprovante de PIX e deixe seu nome</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSupportSubmit} className="space-y-4 md:space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="supportName">Nome Completo</Label>
                 <Input
@@ -202,15 +205,6 @@ export default function WeddingPage() {
                   required
                   className="bg-background w-full"
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="giftId">Referente ao Presente (opcional)</Label>
-                <select id="giftId" name="giftId" className="bg-background border border-border rounded-md h-9 px-3 w-full">
-                  <option value="">Selecionar...</option>
-                  {gifts.filter((g) => !g.claimed).map((g) => (
-                    <option key={g.id} value={g.id} selected={supportSelectedGiftId === g.id}>{g.name}</option>
-                  ))}
-                </select>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -3,10 +3,8 @@
     "id": 1,
     "name": "Jogo de panelas",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": true,
-    "category": "Cozinha",
-    "claimedBy": "teste",
-    "claimedByPhoto": "/uploads/supporters/1763917536034-foto1.png"
+    "claimed": false,
+    "category": "Cozinha"
   },
   {
     "id": 2,
@@ -27,16 +25,14 @@
     "name": "Jogo de copos",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
-    "category": "Cozinha",
-    "claimedByPhoto": "/uploads/supporters/1763855341132-eab4f0cf-9002-422f-b219-8bbf3d710ded.jfif"
+    "category": "Cozinha"
   },
   {
     "id": 5,
     "name": "Jogo de taças",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
     "claimed": false,
-    "category": "Cozinha",
-    "claimedByPhoto": "/uploads/gifts/1763855394987-unnamed__4_.png"
+    "category": "Cozinha"
   },
   {
     "id": 6,
