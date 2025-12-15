@@ -8,6 +8,5 @@
   "/api/supporters/route": "app/api/supporters/route.js",
   "/gifts/page": "app/gifts/page.js",
   "/page": "app/page.js",
-  "/painel/familia-santos-aurora/page": "app/painel/familia-santos-aurora/page.js",
-  "/rsvps/page": "app/rsvps/page.js"
+  "/painel/familia-santos-aurora/page": "app/painel/familia-santos-aurora/page.js"
 }

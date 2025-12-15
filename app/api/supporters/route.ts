@@ -2,44 +2,30 @@ import { NextResponse } from "next/server"
 import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
+import { all, getOne, run, init } from "@/lib/db"
 
 export const runtime = "nodejs"
 
-const DATA_PATH = path.join(process.cwd(), "data", "supporters.json")
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "supporters")
 
-async function ensureFile() {
-  try {
-    await fs.access(DATA_PATH)
-  } catch {
-    await fs.mkdir(path.dirname(DATA_PATH), { recursive: true })
-    await fs.writeFile(DATA_PATH, "[]", "utf-8")
-  }
-}
-
-async function readAll() {
-  await ensureFile()
-  const buf = await fs.readFile(DATA_PATH, "utf-8")
-  try {
-    return JSON.parse(buf)
-  } catch {
-    return []
-  }
-}
-
-async function writeAll(items: any[]) {
-  await fs.writeFile(DATA_PATH, JSON.stringify(items, null, 2), "utf-8")
-}
-
 export async function GET() {
-  const items = await readAll()
+  await init()
+  const rows = await all<any>("SELECT id, name, photo, receipt, createdAt FROM supporters ORDER BY id")
+  const items = rows.map((r) => ({
+    id: Number(r.id),
+    name: String(r.name || ""),
+    photo: r.photo ? String(r.photo) : undefined,
+    receipt: r.receipt ? String(r.receipt) : undefined,
+    createdAt: String(r.createdAt || ""),
+  }))
   return NextResponse.json(items)
 }
 
 export async function POST(request: Request) {
   const ct = request.headers.get("content-type") || ""
-  const items = await readAll()
-  const nextId = items.reduce((m: number, it: any) => Math.max(m, Number(it.id) || 0), 0) + 1
+  await init()
+  const mx = await getOne<{ max: number }>("SELECT MAX(id) AS max FROM supporters")
+  const nextId = ((mx?.max || 0) as number) + 1
 
   async function saveFile(file: File, dir: string) {
     await fs.mkdir(dir, { recursive: true })
@@ -77,15 +63,19 @@ export async function POST(request: Request) {
       receiptPath = `/uploads/supporters/${fname}`
     }
     const entry = { id: nextId, name, photo: photoPath || undefined, receipt: receiptPath || undefined, createdAt: new Date().toISOString() }
-    items.push(entry)
-    await writeAll(items)
+    await run(
+      "INSERT INTO supporters (id, name, photo, receipt, createdAt) VALUES (?, ?, ?, ?, ?)",
+      [entry.id, entry.name, entry.photo || null, entry.receipt || null, entry.createdAt]
+    )
     return NextResponse.json(entry, { status: 201 })
   }
 
   const body = await request.json().catch(() => ({}))
   const entry = { id: nextId, name: String(body?.name || ""), photo: body?.photo ? String(body.photo) : undefined, receipt: body?.receipt ? String(body.receipt) : undefined, createdAt: new Date().toISOString() }
-  items.push(entry)
-  await writeAll(items)
+  await run(
+    "INSERT INTO supporters (id, name, photo, receipt, createdAt) VALUES (?, ?, ?, ?, ?)",
+    [entry.id, entry.name, entry.photo || null, entry.receipt || null, entry.createdAt]
+  )
   return NextResponse.json(entry, { status: 201 })
 }
 
@@ -93,10 +83,8 @@ export async function DELETE(request: Request) {
   const body = await request.json().catch(() => ({}))
   const id = Number(body?.id || 0)
   if (!id) return NextResponse.json({ error: 'invalid_id' }, { status: 400 })
-  const items = await readAll()
-  const idx = items.findIndex((it: any) => Number(it.id) === id)
-  if (idx === -1) return NextResponse.json({ error: 'not_found' }, { status: 404 })
-  items.splice(idx, 1)
-  await writeAll(items)
+  const current = await getOne<any>("SELECT id FROM supporters WHERE id = ?", [id])
+  if (!current) return NextResponse.json({ error: 'not_found' }, { status: 404 })
+  await run("DELETE FROM supporters WHERE id = ?", [id])
   return NextResponse.json({ ok: true })
 }
