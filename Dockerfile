@@ -4,10 +4,12 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 
-COPY package*.json ./
+RUN apk add --no-cache libc6-compat
+
+COPY package.json pnpm-lock.yaml ./
 COPY .npmrc .npmrc
 
-RUN apk add --no-cache libc6-compat && npm ci
+RUN corepack enable && pnpm install --frozen-lockfile
 
 COPY . .
 
@@ -15,7 +17,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ARG NEXT_PUBLIC_BASE_PATH=""
 ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 
-RUN npm run build
+# força webpack no build (evita chunks do turbopack)
+RUN pnpm run build -- --webpack
 
 ##############################
 # RUNTIME STAGE
@@ -32,22 +35,15 @@ ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 
 RUN apk add --no-cache libc6-compat
 
-# Copia tudo do builder (inclui public/fotos e public/uploads)
 COPY --from=builder /app ./
 
-# Cria pastas de uploads e ajusta permissões
 RUN mkdir -p /app/public/uploads \
     /app/public/uploads/gifts \
     /app/public/uploads/supporters \
     /app/data && \
     chown -R node:node /app/public/uploads /app/data
 
-# !!! IMPORTANTE !!!
-# NÃO DEFINIR VOLUME AQUI!
-# O CapRover deve gerenciar volumes pela interface.
-
 USER node
-
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm start -- -p ${PORT}"]
+CMD ["sh", "-c", "pnpm start -- -H 0.0.0.0 -p ${PORT}"]
