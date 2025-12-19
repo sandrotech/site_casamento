@@ -18,7 +18,7 @@ ARG NEXT_PUBLIC_BASE_PATH=""
 ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 
 # força webpack no build (evita chunks do turbopack)
-RUN pnpm run build -- --webpack
+RUN pnpm run build
 
 ##############################
 # RUNTIME STAGE
