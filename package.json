@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "node scripts/clean-next.mjs && next build",
+    "build": "node scripts/clean-next.mjs && next build --webpack",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start"

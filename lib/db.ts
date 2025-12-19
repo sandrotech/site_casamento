@@ -1,16 +1,17 @@
-import sqlite3 from "sqlite3"
 import path from "path"
 import { promises as fs } from "fs"
 
 const DB_PATH = path.join(process.cwd(), "data", "site.db")
-let db: sqlite3.Database | null = null
+let db: any | null = null
 let initialized = false
 
-function open(): Promise<sqlite3.Database> {
+async function open(): Promise<any> {
   return new Promise(async (resolve, reject) => {
     try {
+      const mod = await import("sqlite3")
+      const sqlite3 = (mod as any).default || mod
       await fs.mkdir(path.dirname(DB_PATH), { recursive: true })
-      const instance = new sqlite3.Database(DB_PATH, (err) => {
+      const instance = new sqlite3.Database(DB_PATH, (err: any) => {
         if (err) reject(err)
         else resolve(instance)
       })
@@ -20,7 +21,7 @@ function open(): Promise<sqlite3.Database> {
   })
 }
 
-async function getDb(): Promise<sqlite3.Database> {
+async function getDb(): Promise<any> {
   if (db) return db
   db = await open()
   return db
@@ -29,7 +30,7 @@ async function getDb(): Promise<sqlite3.Database> {
 function run(sql: string, params: any[] = []): Promise<void> {
   return new Promise(async (resolve, reject) => {
     const conn = await getDb()
-    conn.run(sql, params, function (err) {
+    conn.run(sql, params, function (err: any) {
       if (err) reject(err)
       else resolve()
     })
@@ -39,7 +40,7 @@ function run(sql: string, params: any[] = []): Promise<void> {
 function getOne<T = any>(sql: string, params: any[] = []): Promise<T | undefined> {
   return new Promise(async (resolve, reject) => {
     const conn = await getDb()
-    conn.get(sql, params, function (err, row) {
+    conn.get(sql, params, function (err: any, row: any) {
       if (err) reject(err)
       else resolve(row as T | undefined)
     })
@@ -49,7 +50,7 @@ function getOne<T = any>(sql: string, params: any[] = []): Promise<T | undefined
 function all<T = any>(sql: string, params: any[] = []): Promise<T[]> {
   return new Promise(async (resolve, reject) => {
     const conn = await getDb()
-    conn.all(sql, params, function (err, rows) {
+    conn.all(sql, params, function (err: any, rows: any[]) {
       if (err) reject(err)
       else resolve(rows as T[])
     })
