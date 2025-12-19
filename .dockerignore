@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+Dockerfile
+.dockerignore
+.git
+.gitignore
+*.log
+.next
+out
+tsconfig.tsbuildinfo
+public/uploads
+data/site.db
+data/site.db-wal
+data/site.db-shm
