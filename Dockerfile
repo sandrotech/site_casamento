@@ -35,7 +35,10 @@ ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 
 RUN apk add --no-cache libc6-compat
 
-COPY --from=builder /app ./
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/data ./data
 
 RUN mkdir -p /app/public/uploads \
     /app/public/uploads/gifts \
@@ -46,4 +49,4 @@ RUN mkdir -p /app/public/uploads \
 USER node
 EXPOSE 3000
 
-CMD ["sh", "-c", "pnpm start -- -H 0.0.0.0 -p ${PORT}"]
+CMD ["node", "server.js"]
