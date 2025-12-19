@@ -1,14 +1,14 @@
 {
-  "/_global-error/page": "/_global-error",
-  "/_not-found/page": "/_not-found",
-  "/access/familia-santos/page": "/access/familia-santos",
   "/api/admin/login/route": "/api/admin/login",
-  "/api/gifts/[id]/route": "/api/gifts/[id]",
-  "/api/gifts/route": "/api/gifts",
   "/api/rsvp/route": "/api/rsvp",
+  "/_not-found/page": "/_not-found",
+  "/_global-error/page": "/_global-error",
+  "/api/gifts/[id]/route": "/api/gifts/[id]",
   "/api/supporters/route": "/api/supporters",
-  "/gifts/page": "/gifts",
+  "/api/gifts/route": "/api/gifts",
   "/page": "/",
-  "/painel/familia-santos-aurora/page": "/painel/familia-santos-aurora",
-  "/rsvps/page": "/rsvps"
+  "/gifts/page": "/gifts",
+  "/rsvps/page": "/rsvps",
+  "/access/familia-santos/page": "/access/familia-santos",
+  "/painel/familia-santos-aurora/page": "/painel/familia-santos-aurora"
 }

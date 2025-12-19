@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
+
 const PASSWORD = (process.env.ADMIN_PASSWORD || "familia_santos").toLowerCase().trim()
 
 export async function POST(request: Request) {
