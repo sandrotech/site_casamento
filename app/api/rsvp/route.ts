@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { all, run, init } from "@/lib/db"
 
+export const runtime = "nodejs"
+
 export async function GET() {
   await init()
   const rows = await all<any>("SELECT name, guests, message, createdAt FROM rsvps ORDER BY createdAt")

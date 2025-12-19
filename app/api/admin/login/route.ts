@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 
+export const runtime = "nodejs"
+
 const PASSWORD = (process.env.ADMIN_PASSWORD || "familia_santos").toLowerCase().trim()
 
 export async function POST(request: Request) {
