@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 
 type Gift = {
-  id: number
+  id: string
   name: string
   image: string
   claimed: boolean
@@ -37,13 +37,13 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
     if (src.startsWith('/')) return `${base}${src}`
     return `${base}/${src}`
   }
-  const categories = ['Cozinha', 'Banheiro', 'Lavanderia', 'Sala e Quarto']
-  const groups = categories
-    .map((c) => ({ label: c, items: gifts.filter((g) => (g.category || '') === c) }))
+  const dynamicCategories = Array.from(new Set(gifts.map((g) => String(g.category || '').trim()).filter(Boolean)))
+  const groups = dynamicCategories
+    .map((c) => ({ label: c, items: gifts.filter((g) => String(g.category || '').trim() === c) }))
     .filter((g) => g.items.length > 0)
-  const others = gifts.filter((g) => !g.category || !categories.includes(g.category))
+  const others = gifts.filter((g) => !String(g.category || '').trim() || !dynamicCategories.includes(String(g.category || '').trim()))
   const tabs = others.length > 0 ? [...groups, { label: 'Outros', items: others }] : groups
-  const initialTab = tabs.find((t) => t.label === 'Cozinha')?.label ?? tabs[0]?.label
+  const initialTab = tabs[0]?.label ?? 'Outros'
   return (
     <motion.section
       className="py-24 px-4 bg-secondary/25 border-t border-b border-border/50"

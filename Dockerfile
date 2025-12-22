@@ -18,6 +18,7 @@ ARG NEXT_PUBLIC_BASE_PATH=""
 ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 
 # força webpack no build (evita chunks do turbopack)
+RUN rm -f tsconfig.tsbuildinfo || true
 RUN pnpm run build
 
 ##############################
