@@ -4,13 +4,9 @@ node_modules
 out
 .vercel
 public/uploads/
-public/
-public
 *.log
 dist
 build
 data/site.db
 data/site.db-wal
 data/site.db-shm
-data/
-tsconfig.tsbuildinfo
