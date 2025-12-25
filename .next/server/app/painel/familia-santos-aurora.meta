@@ -10,6 +10,7 @@
     "/painel/familia-santos-aurora/__PAGE__",
     "/painel/familia-santos-aurora",
     "/painel",
-    "/_index"
+    "/_index",
+    "/_head"
   ]
 }

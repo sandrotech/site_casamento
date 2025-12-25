@@ -1,8 +1,8 @@
 {
   "version": 1,
   "functions": {
+    "/api/gifts": {},
     "/api/gifts/[id]": {},
-    "/api/supporters": {},
-    "/api/gifts": {}
+    "/api/supporters": {}
   }
 }
