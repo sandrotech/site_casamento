@@ -2,20 +2,34 @@ import { NextResponse, NextRequest } from "next/server"
 import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
-import { all, getOne, run, init } from "@/lib/db"
 
 export const runtime = "nodejs"
 
+const DATA_PATH = path.join(process.cwd(), "data", "gifts.json")
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "gifts")
+
+async function readAll() {
+  try {
+    const buf = await fs.readFile(DATA_PATH, "utf-8")
+    return JSON.parse(buf)
+  } catch {
+    return []
+  }
+}
+
+async function writeAll(items: any[]) {
+  await fs.mkdir(path.dirname(DATA_PATH), { recursive: true })
+  await fs.writeFile(DATA_PATH, JSON.stringify(items, null, 2), "utf-8")
+}
 
 export async function PUT(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   const { id: idParam } = await context.params
   let raw = idParam
   let id = parseInt(String(raw).replace(/[^0-9]/g, ''), 10)
   const contentType = request.headers.get("content-type") || ""
-  await init()
-  const current = await getOne<any>("SELECT * FROM gifts WHERE id = ?", [id])
-  if (!current) return NextResponse.json({ error: "not_found" }, { status: 404 })
+  const items = await readAll()
+  const idx = items.findIndex((g: any) => Number(g.id) === id)
+  if (idx === -1) return NextResponse.json({ error: "not_found" }, { status: 404 })
   if (contentType.includes("multipart/form-data")) {
     const form = await request.formData()
     const patch: any = {}
@@ -54,63 +68,28 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
         patch.claimedByPhoto = `/uploads/gifts/${filename}`
       }
     }
-    const next = { ...current, ...patch, id }
-    if (Object.prototype.hasOwnProperty.call(patch, 'claimed') && patch.claimed === false) {
-      next.claimedBy = null
-      next.claimedByPhoto = null
-    }
-    await run(
-      "UPDATE gifts SET name = ?, image = ?, category = COALESCE(category, NULL), claimed = ?, claimedBy = ?, claimedByPhoto = ? WHERE id = ?",
-      [
-        String(next.name || ""),
-        next.image || null,
-        next.claimed ? 1 : 0,
-        next.claimedBy || null,
-        next.claimedByPhoto || null,
-        id,
-      ]
-    )
+    items[idx] = { ...items[idx], ...patch, id }
   } else {
     const body = await request.json()
-    const next = { ...current, ...body, id }
+    const next = { ...items[idx], ...body, id }
     if (body && Object.prototype.hasOwnProperty.call(body, 'claimed') && body.claimed === false) {
-      next.claimedBy = null
-      next.claimedByPhoto = null
+      delete next.claimedBy
+      delete next.claimedByPhoto
     }
-    await run(
-      "UPDATE gifts SET name = ?, image = ?, category = ?, claimed = ?, claimedBy = ?, claimedByPhoto = ? WHERE id = ?",
-      [
-        String(next.name || ""),
-        next.image || null,
-        next.category || null,
-        next.claimed ? 1 : 0,
-        next.claimedBy || null,
-        next.claimedByPhoto || null,
-        id,
-      ]
-    )
+    items[idx] = next
   }
-  const updated = await getOne<any>("SELECT * FROM gifts WHERE id = ?", [id])
-  const json = updated
-    ? {
-        id: Number(updated.id),
-        name: String(updated.name || ""),
-        image: updated.image ? String(updated.image) : "",
-        category: updated.category ? String(updated.category) : undefined,
-        claimed: Number(updated.claimed) === 1,
-        claimedBy: updated.claimedBy ? String(updated.claimedBy) : undefined,
-        claimedByPhoto: updated.claimedByPhoto ? String(updated.claimedByPhoto) : undefined,
-      }
-    : null
-  return NextResponse.json(json)
+  await writeAll(items)
+  return NextResponse.json(items[idx])
 }
 
 export async function DELETE(_request: NextRequest, context: { params: Promise<{ id: string }> }) {
   const { id: idParam } = await context.params
   const id = Number(idParam)
-  const current = await getOne<any>("SELECT * FROM gifts WHERE id = ?", [id])
-  if (!current) return NextResponse.json({ error: "not_found" }, { status: 404 })
-  if (Number(current.claimed) === 1) return NextResponse.json({ error: "claimed" }, { status: 409 })
-  await run("DELETE FROM gifts WHERE id = ?", [id])
+  const items = await readAll()
+  const idx = items.findIndex((g: any) => Number(g.id) === id)
+  if (idx === -1) return NextResponse.json({ error: "not_found" }, { status: 404 })
+  if (items[idx]?.claimed) return NextResponse.json({ error: "claimed" }, { status: 409 })
+  items.splice(idx, 1)
+  await writeAll(items)
   return NextResponse.json({ ok: true })
 }

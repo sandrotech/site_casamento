@@ -53,7 +53,7 @@ export default function WeddingPage() {
     return () => clearInterval(id)
   }, [])
   const [selectedGift, setSelectedGift] = useState<{
-    id: string
+    id: number
     name: string
     image: string
     claimed: boolean
@@ -63,42 +63,20 @@ export default function WeddingPage() {
 
   const [giftModalOpen, setGiftModalOpen] = useState(false)
   const [supportModalOpen, setSupportModalOpen] = useState(false)
-  const [supportSelectedGiftId, setSupportSelectedGiftId] = useState<string | null>(null)
+  const [supportSelectedGiftId, setSupportSelectedGiftId] = useState<number | null>(null)
   const [gifts, setGifts] = useState<{
-    id: string
+    id: number
     name: string
     image: string
     claimed: boolean
     claimedBy?: string
     claimedByPhoto?: string
-    category?: string
   }[]>([])
 
   async function loadGifts() {
-    const base = (process.env.NEXT_PUBLIC_URL || "").replace(/\/$/, "")
-    const res = await fetch(`${base}/presentes/`)
-    const json = await res.json().catch(() => [])
-    const mapped = Array.isArray(json)
-      ? json.map((gift: any, index: number) => {
-        const path = String(gift?.imagem || "").trim()
-        const full =
-          /^https?:\/\//.test(path)
-            ? path
-            : path
-              ? `${base}${path.startsWith("/") ? "" : "/"}${path}`
-              : ""
-        return {
-          id: String(gift?.id || index),
-          name: String(gift?.nome || ""),
-          image: full,
-          claimed: String(gift?.status || "").toLowerCase() !== "disponivel",
-          claimedBy: gift?.doador ? String(gift.doador) : undefined,
-          claimedByPhoto: undefined,
-          category: String(gift?.categoria || gift?.secao || gift?.category || "").trim() || undefined,
-        }
-      })
-      : []
-    setGifts(mapped)
+    const res = await fetch("/api/gifts")
+    const json = await res.json()
+    setGifts(Array.isArray(json) ? json : [])
   }
 
   useEffect(() => {
@@ -125,11 +103,10 @@ export default function WeddingPage() {
     const name = String(formData.get("name") || "")
 
     if (selectedGift) {
-      const base = (process.env.NEXT_PUBLIC_URL || "").replace(/\/$/, "")
-      const res = await fetch(`${base}/presentes/${selectedGift.id}`, {
+      const res = await fetch(`/api/gifts/${selectedGift.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ doador: name }),
+        body: JSON.stringify({ claimed: true, claimedBy: name }),
       })
       if (res.ok) {
         await loadGifts()
@@ -152,7 +129,7 @@ export default function WeddingPage() {
     if (res.ok) {
       const created = await res.json().catch(() => ({}))
       const giftIdStr = String(formData.get("giftId") || "")
-      const giftId = giftIdStr ? giftIdStr : supportSelectedGiftId
+      const giftId = giftIdStr ? Number(giftIdStr) : supportSelectedGiftId
       if (giftId) {
         const name = String(formData.get("supportName") || "")
         await fetch(`/api/gifts/${giftId}`, {
@@ -198,6 +175,8 @@ export default function WeddingPage() {
         </div>
       </motion.section>
 
+      <WeddingLocationsSection routeEmbedUrl={ROUTE_EMBED_URL} />
+
       <HistorySection />
 
 
@@ -205,12 +184,19 @@ export default function WeddingPage() {
       <RsvpSection />
 
 
-      <GiftListSection gifts={gifts} onClaim={handleGiftClaim} onPix={(gift) => { setSupportSelectedGiftId(gift.id); setSupportModalOpen(true) }} />
+      <GiftListSection
+        gifts={gifts}
+        onClaim={handleGiftClaim}
+        onPix={(gift) => {
+          const el = typeof document !== 'undefined' ? document.getElementById('support-section') : null
+          if (el && 'scrollIntoView' in el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+          setSupportSelectedGiftId(gift.id)
+        }}
+      />
 
       <SupportSection supporters={supporters} pixKey={PIX_KEY} onOpenSupportModal={() => setSupportModalOpen(true)} />
-
-      {/* Seção de Local / Rota */}
-      <WeddingLocationsSection routeEmbedUrl={ROUTE_EMBED_URL} />
 
       {/* Footer */}
       <footer className="py-12 px-4 text-center border-t border-border/50">

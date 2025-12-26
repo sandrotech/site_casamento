@@ -2,34 +2,46 @@ import { NextResponse } from "next/server"
 import sharp from "sharp"
 import { promises as fs } from "fs"
 import path from "path"
-import { all, getOne, run, init } from "@/lib/db"
 
 export const runtime = "nodejs"
 
+const DATA_PATH = path.join(process.cwd(), "data", "gifts.json")
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "gifts")
 
+async function ensureFile() {
+  try {
+    await fs.access(DATA_PATH)
+  } catch {
+    await fs.mkdir(path.dirname(DATA_PATH), { recursive: true })
+    await fs.writeFile(DATA_PATH, "[]", "utf-8")
+  }
+}
+
 export async function GET() {
-  await init()
-  const rows = await all<any>(
-    "SELECT id, name, image, category, claimed, claimedBy, claimedByPhoto FROM gifts ORDER BY id"
-  )
-  const data = rows.map((r) => ({
-    id: Number(r.id),
-    name: String(r.name || ""),
-    image: r.image ? String(r.image) : "",
-    category: r.category ? String(r.category) : undefined,
-    claimed: Number(r.claimed) === 1,
-    claimedBy: r.claimedBy ? String(r.claimedBy) : undefined,
-    claimedByPhoto: r.claimedByPhoto ? String(r.claimedByPhoto) : undefined,
-  }))
+  await ensureFile()
+  const buf = await fs.readFile(DATA_PATH, "utf-8")
+  let data: any[] = []
+  try {
+    data = JSON.parse(buf)
+  } catch {
+    data = []
+    await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
+  }
   return NextResponse.json(data)
 }
 
 export async function POST(request: Request) {
+  await ensureFile()
   const contentType = request.headers.get("content-type") || ""
-  await init()
-  const mx = await getOne<{ max: number }>("SELECT MAX(id) as max FROM gifts")
-  const nextId = ((mx?.max || 0) as number) + 1
+  const buf = await fs.readFile(DATA_PATH, "utf-8")
+  let data: any[] = []
+  try {
+    data = JSON.parse(buf)
+  } catch {
+    data = []
+    await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
+  }
+  const nextId = data.reduce((max: number, g: any) => Math.max(max, Number(g.id) || 0), 0) + 1
 
   async function saveUploadedFile(file: File) {
     await fs.mkdir(UPLOAD_DIR, { recursive: true })
@@ -63,10 +75,8 @@ export async function POST(request: Request) {
       category,
       claimed: false,
     }
-    await run(
-      "INSERT INTO gifts (id, name, image, category, claimed) VALUES (?, ?, ?, ?, ?)",
-      [entry.id, entry.name, entry.image || null, entry.category || null, entry.claimed ? 1 : 0]
-    )
+    data.push(entry)
+    await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
     return NextResponse.json(entry, { status: 201 })
   } else {
     const body = await request.json()
@@ -79,18 +89,8 @@ export async function POST(request: Request) {
       claimedBy: body?.claimedBy ? String(body.claimedBy) : undefined,
       claimedByPhoto: body?.claimedByPhoto ? String(body.claimedByPhoto) : undefined,
     }
-    await run(
-      "INSERT INTO gifts (id, name, image, category, claimed, claimedBy, claimedByPhoto) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [
-        entry.id,
-        entry.name,
-        entry.image || null,
-        entry.category || null,
-        entry.claimed ? 1 : 0,
-        entry.claimedBy || null,
-        entry.claimedByPhoto || null,
-      ]
-    )
+    data.push(entry)
+    await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
     return NextResponse.json(entry, { status: 201 })
   }
 }

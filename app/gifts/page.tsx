@@ -32,41 +32,12 @@ export default function GiftsAdminPage() {
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<number | null>(null)
 
-  function withApi(src: string) {
-    const base = (process.env.NEXT_PUBLIC_URL || '').replace(/\/$/, '')
-    let path = String(src || '').trim()
-    if (!path) return ''
-    path = path.replace(/^\/files\/presentes\//, '/presentes/')
-    if (/^https?:\/\//.test(path)) return path
-    if (base && path.startsWith('/')) return `${base}${path}`
-    if (base) return `${base}/${path}`
-    return path
-  }
-
   async function load() {
     setLoading(true)
     try {
-      const base = (process.env.NEXT_PUBLIC_URL || '').replace(/:3000\/?$/, ':3001/')
-      const url = `${base.replace(/\/$/, '')}/presentes`
-      const res = await fetch(url)
+      const res = await fetch('/api/gifts')
       const json = await res.json()
-      const mapped = Array.isArray(json)
-        ? (json as any[]).map((it, idx) => {
-          const status = String((it as any)?.status || '').toLowerCase()
-          const img = String((it as any)?.imagem || '')
-            .replace(/[`"]/g, '')
-            .trim()
-          return {
-            id: Number(idx + 1),
-            name: String((it as any)?.nome || ''),
-            image: img,
-            claimed: status === 'reservado' || status === 'doado',
-            claimedBy: (it as any)?.doador ? String((it as any)?.doador) : undefined,
-            claimedByPhoto: undefined,
-          }
-        })
-        : []
-      setItems(mapped)
+      setItems(Array.isArray(json) ? json : [])
     } finally {
       setLoading(false)
     }
@@ -77,20 +48,12 @@ export default function GiftsAdminPage() {
       toast({ title: 'Nome obrigatório' })
       return
     }
-    if (!fileCreate || fileCreate.size === 0) {
-      toast({ title: 'Imagem obrigatória' })
-      return
-    }
     setLoading(true)
     try {
       const fd = new FormData()
-      fd.append('nome', form.name.trim() || 'Presente')
-      fd.append('status', 'disponivel')
-      fd.append('doador', '')
-      fd.append('imagem', fileCreate as File)
-      const base = (process.env.NEXT_PUBLIC_URL || '').replace(/\/$/, '')
-      const url = `${base}/presentes`
-      const res = await fetch(url, { method: 'POST', body: fd })
+      fd.append('name', form.name.trim())
+      if (fileCreate) fd.append('image', fileCreate)
+      const res = await fetch('/api/gifts', { method: 'POST', body: fd })
       if (res.ok) {
         setForm({ name: '' })
         setFileCreate(null)
@@ -98,27 +61,7 @@ export default function GiftsAdminPage() {
         await load()
         toast({ title: 'Presente cadastrado' })
       } else {
-        let description = ''
-        try {
-          const ct = (res.headers.get('content-type') || '').toLowerCase()
-          if (ct.includes('application/json')) {
-            const j = await res.json().catch(() => null)
-            if (j) {
-              description =
-                typeof j === 'string'
-                  ? j
-                  : String(j.message || j.error || j.details || JSON.stringify(j))
-            }
-          } else {
-            const txt = await res.text().catch(() => '')
-            description = txt.trim()
-          }
-        } catch { }
-        toast({
-          title: 'Erro ao cadastrar',
-          description: description || `Status ${res.status} ${res.statusText}`,
-          variant: 'destructive',
-        })
+        toast({ title: 'Erro ao cadastrar' })
       }
     } finally {
       setLoading(false)
@@ -229,7 +172,7 @@ export default function GiftsAdminPage() {
                     <TableCell className="max-w-[260px]">
                       <div className="flex items-center gap-3">
                         {g.image ? (
-                          <img src={withApi(g.image)} alt={g.name} className="w-14 h-14 rounded-md object-cover border" />
+                          <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${g.image}` : g.image)} alt={g.name} className="w-14 h-14 rounded-md object-cover border" />
                         ) : (
                           <div className="w-14 h-14 rounded-md border bg-muted" />
                         )}

@@ -31,6 +31,7 @@ export default function SupportSection({ supporters, pixKey, onOpenSupportModal 
   }
   return (
     <motion.section
+      id="support-section"
       className="py-20 px-4"
       initial="initial"
       whileInView="animate"
