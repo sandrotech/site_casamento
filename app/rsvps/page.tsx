@@ -1,11 +1,27 @@
 'use client'
 
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from '@/components/ui/dialog'
 import { motion } from 'framer-motion'
 
 type Rsvp = {
@@ -21,11 +37,20 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 }
 
+function formatWhen(iso: string) {
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime()) ? '-' : d.toLocaleString()
+}
+
 export default function RsvpsPage() {
   const [data, setData] = useState<Rsvp[]>([])
   const [loading, setLoading] = useState(false)
+
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmKey, setConfirmKey] = useState<string | null>(null)
+
+  const [msgOpen, setMsgOpen] = useState(false)
+  const [selected, setSelected] = useState<Rsvp | null>(null)
 
   async function load() {
     setLoading(true)
@@ -46,9 +71,7 @@ export default function RsvpsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ createdAt }),
       })
-      if (res.ok) {
-        await load()
-      }
+      if (res.ok) await load()
     } finally {
       setLoading(false)
     }
@@ -58,9 +81,13 @@ export default function RsvpsPage() {
     load()
   }, [])
 
+  const totalCaption = useMemo(() => {
+    return data.length === 0 ? 'Nenhuma confirmação ainda' : `${data.length} confirmações`
+  }, [data.length])
+
   return (
     <motion.section className="py-20 px-4" initial="initial" animate="animate" variants={fadeInUp}>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-2">Confirmações</h2>
           <p className="text-muted-foreground">Acompanhe quem confirmou presença</p>
@@ -78,43 +105,88 @@ export default function RsvpsPage() {
               </button>
             </div>
 
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Acompanhantes</TableHead>
-                  <TableHead>Mensagem</TableHead>
-                  <TableHead>Quando</TableHead>
-                  <TableHead>Ações</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.map((r, idx) => (
-                  <TableRow key={idx}>
-                    <TableCell>{r.name}</TableCell>
-                    <TableCell>{r.guests}</TableCell>
-                    <TableCell className="max-w-[360px] truncate">{r.message}</TableCell>
-                    <TableCell>{new Date(r.createdAt).toLocaleString()}</TableCell>
-                    <TableCell>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => {
-                          setConfirmKey(r.createdAt)
-                          setConfirmOpen(true)
-                        }}
-                      >
-                        Excluir
-                      </Button>
-                    </TableCell>
+            {/* Em telas pequenas, ainda pode rolar horizontalmente — mas a mensagem não “explode” o layout */}
+            <div className="w-full overflow-x-auto">
+              <Table className="w-full table-fixed">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[170px]">Nome</TableHead>
+                    <TableHead className="w-[140px]">Acompanhantes</TableHead>
+                    <TableHead>Mensagem</TableHead>
+                    <TableHead className="w-[190px]">Quando</TableHead>
+                    <TableHead className="w-[110px] text-right">Ações</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-              <TableCaption>{data.length === 0 ? 'Nenhuma confirmação ainda' : `${data.length} confirmações`}</TableCaption>
-            </Table>
+                </TableHeader>
+
+                <TableBody>
+                  {data.map((r, idx) => {
+                    const msg = (r.message ?? '').trim()
+                    const isLong = msg.length > 120
+
+                    return (
+                      <TableRow key={`${r.createdAt}-${idx}`}>
+                        <TableCell className="align-top">{r.name}</TableCell>
+                        <TableCell className="align-top">{r.guests}</TableCell>
+
+                        {/* Preview controlado + “Ver” para abrir modal */}
+                        <TableCell className="align-top">
+                          {msg ? (
+                            <div className="flex items-start gap-3">
+                              <div className="min-w-0 flex-1">
+                                <p
+                                  className="
+                                    whitespace-pre-line break-words overflow-hidden
+                                    [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]
+                                  "
+                                >
+                                  {msg}
+                                </p>
+                                {isLong && (
+                                  <button
+                                    type="button"
+                                    className="mt-1 text-xs text-muted-foreground hover:text-foreground underline underline-offset-4"
+                                    onClick={() => {
+                                      setSelected(r)
+                                      setMsgOpen(true)
+                                    }}
+                                  >
+                                    Ver mensagem completa
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )}
+                        </TableCell>
+
+                        <TableCell className="align-top">{formatWhen(r.createdAt)}</TableCell>
+
+                        <TableCell className="align-top text-right">
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => {
+                              setConfirmKey(r.createdAt)
+                              setConfirmOpen(true)
+                            }}
+                          >
+                            Excluir
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+
+                <TableCaption>{totalCaption}</TableCaption>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </div>
+
+      {/* Confirma exclusão */}
       <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -125,9 +197,7 @@ export default function RsvpsPage() {
             <AlertDialogCancel onClick={() => setConfirmOpen(false)}>Cancelar</AlertDialogCancel>
             <AlertDialogAction
               onClick={async () => {
-                if (confirmKey) {
-                  await deleteRsvp(confirmKey)
-                }
+                if (confirmKey) await deleteRsvp(confirmKey)
                 setConfirmOpen(false)
                 setConfirmKey(null)
               }}
@@ -137,6 +207,41 @@ export default function RsvpsPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Modal da mensagem completa */}
+      <Dialog
+        open={msgOpen}
+        onOpenChange={(open) => {
+          setMsgOpen(open)
+          if (!open) setSelected(null)
+        }}
+      >
+        <DialogContent className="sm:max-w-[720px]">
+          <DialogHeader>
+            <DialogTitle>Mensagem</DialogTitle>
+            <DialogDescription>
+              {selected ? (
+                <>
+                  <span className="font-medium">{selected.name}</span> • {selected.guests} acompanhante(s) •{' '}
+                  {formatWhen(selected.createdAt)}
+                </>
+              ) : null}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="max-h-[55vh] overflow-y-auto rounded-md border p-3">
+            <p className="whitespace-pre-wrap break-words text-sm">
+              {selected?.message?.trim() ? selected.message : '—'}
+            </p>
+          </div>
+
+          <DialogFooter>
+            <Button variant="secondary" onClick={() => setMsgOpen(false)}>
+              Fechar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </motion.section>
   )
 }

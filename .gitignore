@@ -3,10 +3,7 @@ node_modules
 .turbo
 out
 .vercel
-public/uploads/
 *.log
 dist
 build
-data/site.db
-data/site.db-wal
-data/site.db-shm
+
