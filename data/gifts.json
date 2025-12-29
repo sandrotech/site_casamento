@@ -10,43 +10,49 @@
     "id": 2,
     "name": "Panela de pressão",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Elizângela Brito"
   },
   {
     "id": 3,
     "name": "Jogo de talheres",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Sônia Maria Fonseca da Silva"
   },
   {
     "id": 4,
     "name": "Jogo de copos",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "ALAN MAGALHAES DE CARVALHO"
   },
   {
     "id": 5,
     "name": "Jogo de taças",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Elisângela Tavares da Silva Barros"
   },
   {
     "id": 6,
     "name": "Jogo de xícaras",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Velane"
   },
   {
     "id": 7,
     "name": "Jogo de louças (pratos rasos, fundos e de sobremesa)",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Diana Maria Henrique Sampaio"
   },
   {
     "id": 8,
@@ -73,8 +79,9 @@
     "id": 14,
     "name": "Jarra de suco",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Wesley Ferreira"
   },
   {
     "id": 15,
@@ -94,29 +101,33 @@
     "id": 17,
     "name": "Porta-tempero giratório com 12 potes",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Vilani"
   },
   {
     "id": 19,
     "name": "Chaleira",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Willian e Herika"
   },
   {
     "id": 20,
     "name": "Liquidificador",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Presente ganho"
   },
   {
     "id": 21,
     "name": "Sanduicheira ou grill",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Sonia"
   },
   {
     "id": 22,
@@ -136,22 +147,25 @@
     "id": 27,
     "name": "Jogo americano ou toalha de mesa",
     "image": "/uploads/gifts/1763860114917-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Willian e Herika"
   },
   {
     "id": 28,
     "name": "Toalhas de banho (3 peças)",
     "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
-    "claimed": false,
-    "category": "Banheiro"
+    "claimed": true,
+    "category": "Banheiro",
+    "claimedBy": "Luan de Sousa Castro"
   },
   {
     "id": 29,
     "name": "Toalhas de mão (3 peças)",
     "image": "/uploads/gifts/1763860159581-presente_banheiro.jpg",
-    "claimed": false,
-    "category": "Banheiro"
+    "claimed": true,
+    "category": "Banheiro",
+    "claimedBy": "Jaqueline Moreira Barreto"
   },
   {
     "id": 30,
@@ -192,8 +206,9 @@
     "id": 48,
     "name": "Lençóis (com ou sem elástico)",
     "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
-    "claimed": false,
-    "category": "Sala e Quarto"
+    "claimed": true,
+    "category": "Sala e Quarto",
+    "claimedBy": "Maria do socorro dos Santos de Souza"
   },
   {
     "id": 49,
@@ -206,8 +221,9 @@
     "id": 50,
     "name": "Colcha de cama",
     "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
-    "claimed": false,
-    "category": "Sala e Quarto"
+    "claimed": true,
+    "category": "Sala e Quarto",
+    "claimedBy": "ALESSANDRA FREITAS GONCALVES"
   },
   {
     "id": 51,
@@ -227,15 +243,17 @@
     "id": 53,
     "name": "Ventilador de coluna",
     "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
-    "claimed": false,
-    "category": "Sala e Quarto"
+    "claimed": true,
+    "category": "Sala e Quarto",
+    "claimedBy": "Maria de Fátima Ferreira da Frota"
   },
   {
     "id": 54,
     "name": "Ferro de passar",
     "image": "/uploads/gifts/1763860437266-presentes_sala_quarto.jpg",
-    "claimed": false,
-    "category": "Sala e Quarto"
+    "claimed": true,
+    "category": "Sala e Quarto",
+    "claimedBy": "Vilani"
   },
   {
     "id": 56,
@@ -296,9 +314,10 @@
   {
     "id": 67,
     "name": "Air fryer",
-    "image": "/uploads/gifts/1763860437266-presentes_cozinha.jpg",
-    "claimed": false,
-    "category": "Cozinha"
+    "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Presente ganho"
   },
   {
     "id": 68,
@@ -311,8 +330,9 @@
     "id": 70,
     "name": "Batedeira",
     "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Adrielly"
   },
   {
     "id": 72,
@@ -346,8 +366,9 @@
     "id": 78,
     "name": "Travessas de vidro (jogo)",
     "image": "/uploads/gifts/1763854952746-Gemini_Generated_Image_mptwadmptwadmptw.png",
-    "claimed": false,
-    "category": "Cozinha"
+    "claimed": true,
+    "category": "Cozinha",
+    "claimedBy": "Danyel Ribeiro"
   },
   {
     "id": 80,
@@ -724,9 +745,8 @@
     "id": 188,
     "name": "Ferro vaporizador vertical portátil",
     "image": "/uploads/gifts/1763860332278-presente_lavanderia.jpg",
-    "claimed": true,
-    "category": "Lavanderia",
-    "claimedBy": "TESTE"
+    "claimed": false,
+    "category": "Lavanderia"
   },
   {
     "id": 189,
@@ -1117,9 +1137,8 @@
     "id": 245,
     "name": "Cota para fim de semana romântico em pousada",
     "image": "/uploads/gifts/1763858939906-foto1.png",
-    "claimed": true,
-    "category": "Lua de mel",
-    "claimedBy": "Alessandro barbosa dos santos asdasdaraaaw"
+    "claimed": false,
+    "category": "Lua de mel"
   },
   {
     "id": 246,
