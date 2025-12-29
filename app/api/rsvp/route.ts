@@ -28,12 +28,32 @@ export async function POST(request: Request) {
     guests: Number(body?.guests || 0),
     message: String(body?.message || ""),
     createdAt: new Date().toISOString(),
+    labels: Array.isArray(body?.labels) ? body.labels.map((s: any) => String(s)).filter(Boolean) : [],
   }
   const buf = await fs.readFile(DATA_PATH, "utf-8")
   const data = JSON.parse(buf)
   data.push(entry)
   await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
   return NextResponse.json(entry, { status: 201 })
+}
+
+export async function PUT(request: Request) {
+  await ensureFile()
+  const body = await request.json()
+  const key = String(body?.createdAt || "")
+  const buf = await fs.readFile(DATA_PATH, "utf-8")
+  const data = JSON.parse(buf)
+  const idx = data.findIndex((it: any) => String(it?.createdAt || "") === key)
+  if (idx === -1) return NextResponse.json({ error: "not_found" }, { status: 404 })
+  const patch: any = {}
+  if (typeof body?.name === "string") patch.name = String(body.name)
+  if (typeof body?.message === "string") patch.message = String(body.message)
+  if (body?.guests != null) patch.guests = Number(body.guests) || 0
+  if (Array.isArray(body?.labels)) patch.labels = body.labels.map((s: any) => String(s)).filter(Boolean)
+  const next = { ...data[idx], ...patch }
+  data[idx] = next
+  await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2), "utf-8")
+  return NextResponse.json(next)
 }
 
 export async function DELETE(request: Request) {

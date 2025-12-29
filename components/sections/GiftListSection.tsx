@@ -368,7 +368,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
         </ul>
 
         <Dialog open={openConfirm} onOpenChange={setOpenConfirm}>
-          <DialogContent className="sm:max-w-lg">
+          <DialogContent className="sm:max-w-lg max-w-[calc(100%-1rem)] p-4 max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-xl">Confirmar escolha</DialogTitle>
               <DialogDescription>
@@ -386,7 +386,7 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-semibold text-foreground truncate">{selectedGift.name}</p>
+                  <p className="font-semibold text-foreground whitespace-normal break-words">{selectedGift.name}</p>
                   <p className="text-sm text-muted-foreground">
                     Categoria: {(selectedGift.category || 'Outros').trim() || 'Outros'}
                   </p>
@@ -395,10 +395,10 @@ export default function GiftListSection({ gifts, onClaim, onPix }: Props) {
             )}
 
             <DialogFooter className="gap-2 sm:gap-2">
-              <Button variant="outline" onClick={() => setOpenConfirm(false)}>
+              <Button variant="outline" className="w-full sm:w-auto" onClick={() => setOpenConfirm(false)}>
                 Voltar
               </Button>
-              <Button onClick={confirmPick} className="bg-emerald-600 hover:bg-emerald-700 text-white">
+              <Button onClick={confirmPick} className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white">
                 ✅ Confirmar
               </Button>
             </DialogFooter>

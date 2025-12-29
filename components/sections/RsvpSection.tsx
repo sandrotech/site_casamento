@@ -75,7 +75,7 @@ export default function RsvpSection() {
                 <div className="grid grid-cols-1 gap-4 text-left">
                   <div className="rounded-lg border p-4">
                     <p className="text-xs text-muted-foreground">Nome</p>
-                    <p className="text-lg font-medium text-foreground">{confirmation.name}</p>
+                    <p className="text-lg font-medium text-foreground break-words overflow-hidden">{confirmation.name}</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <p className="text-xs text-muted-foreground">Acompanhantes</p>
@@ -84,7 +84,7 @@ export default function RsvpSection() {
                   {confirmation.message && (
                     <div className="rounded-lg border p-4">
                       <p className="text-xs text-muted-foreground">Mensagem enviada com carinho</p>
-                      <p className="text-lg text-foreground whitespace-pre-line">{confirmation.message}</p>
+                      <p className="text-lg text-foreground whitespace-pre-line break-words overflow-hidden">{confirmation.message}</p>
                     </div>
                   )}
                 </div>

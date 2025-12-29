@@ -25,8 +25,30 @@ export default function AdminPage() {
   const [supporters, setSupporters] = useState<Supporter[]>([])
   const [receiptOpen, setReceiptOpen] = useState(false)
   const [receiptUrl, setReceiptUrl] = useState<string | null>(null)
+  const [receiptCandidates, setReceiptCandidates] = useState<string[]>([])
+  const [receiptIndex, setReceiptIndex] = useState(0)
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<number | null>(null)
+  function withBasePath(u?: string | null) {
+    const b = process.env.NEXT_PUBLIC_BASE_PATH || ''
+    const p = String(u || '')
+    return b ? `${b}${p}` : p
+  }
+  function makeReceiptCandidates(p?: string | null) {
+    const raw = String(p || '')
+    const noQuery = raw.replace(/\?.*$/, '')
+    const hasExt = /\.[a-zA-Z0-9]+$/.test(noQuery)
+    const exts = ['.jpg', '.jpeg', '.png', '.jfif']
+    const list: string[] = []
+    if (hasExt) {
+      list.push(noQuery)
+      const curExt = (noQuery.match(/\.[a-zA-Z0-9]+$/)?.[0] || '').toLowerCase()
+      for (const e of exts) if (e !== curExt) list.push(noQuery.replace(/\.[a-zA-Z0-9]+$/, e))
+    } else {
+      for (const e of exts) list.push(`${noQuery}${e}`)
+    }
+    return list.map(withBasePath)
+  }
 
   async function load() {
     setLoading(true)
@@ -76,28 +98,28 @@ export default function AdminPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card className="border-border/50 shadow-lg">
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <h3 className="font-serif text-2xl text-foreground mb-2">Presentes</h3>
               <p className="text-muted-foreground mb-4">Cadastre, edite e exclua presentes exibidos na landing.</p>
-              <div className="grid grid-cols-3 gap-3 text-center mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center mb-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Total</p>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Total</p>
                   <p className="text-lg font-medium">{giftStats.total}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Disponíveis</p>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Disponíveis</p>
                   <p className="text-lg font-medium">{giftStats.available}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Escolhidos</p>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Escolhidos</p>
                   <p className="text-lg font-medium">{giftStats.claimed}</p>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <Button asChild className="bg-primary text-primary-foreground">
+              <div className="flex flex-wrap gap-2">
+                <Button asChild className="bg-primary text-primary-foreground w-full sm:w-auto">
                   <Link href="/gifts">Abrir gestão de presentes</Link>
                 </Button>
-                <Button variant="outline" onClick={load} disabled={loading}>
+                <Button variant="outline" onClick={load} disabled={loading} className="w-full sm:w-auto">
                   {loading ? 'Atualizando...' : 'Atualizar'}
                 </Button>
               </div>
@@ -105,18 +127,18 @@ export default function AdminPage() {
           </Card>
 
           <Card className="border-border/50 shadow-lg">
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <h3 className="font-serif text-2xl text-foreground mb-2">Confirmações</h3>
               <p className="text-muted-foreground mb-4">Acompanhe quem confirmou presença via RSVP.</p>
               <div className="text-center mb-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Total</p>
                 <p className="text-lg font-medium">{rsvpCount}</p>
               </div>
-              <div className="flex gap-3">
-                <Button asChild className="bg-primary text-primary-foreground">
+              <div className="flex flex-wrap gap-2">
+                <Button asChild className="bg-primary text-primary-foreground w-full sm:w-auto">
                   <Link href="/rsvps">Abrir lista de confirmações</Link>
                 </Button>
-                <Button variant="outline" onClick={load} disabled={loading}>
+                <Button variant="outline" onClick={load} disabled={loading} className="w-full sm:w-auto">
                   {loading ? 'Atualizando...' : 'Atualizar'}
                 </Button>
               </div>
@@ -136,12 +158,12 @@ export default function AdminPage() {
               {supporters.length === 0 ? (
                 <p className="text-muted-foreground">Nenhum apoio recebido ainda</p>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
                   {supporters.slice(0, 8).map((s) => (
                     <div key={s.id} className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-2 rounded-full overflow-hidden bg-muted">
+                      <div className="w-16 h-16 mx-auto mb-2 rounded-full overflow-hidden bg-muted">
                         {s.photo ? (
-                          <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${s.photo}` : s.photo)} alt={s.name} className="w-full h-full object-cover" />
+                          <img src={withBasePath(s.photo)} alt={s.name} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-primary/20">
                             <span className="text-primary font-semibold text-sm">{s.name.slice(0, 1).toUpperCase()}</span>
@@ -149,19 +171,37 @@ export default function AdminPage() {
                         )}
                       </div>
                       <p className="text-sm text-foreground font-medium truncate">{s.name}</p>
-                      {s.createdAt && <p className="text-xs text-muted-foreground">{new Date(s.createdAt).toLocaleDateString()}</p>}
-                      <div className="mt-2 flex items-center justify-center gap-2">
+                      {s.createdAt && <p className="text-[11px] text-muted-foreground">{new Date(s.createdAt).toLocaleDateString()}</p>}
+                      <div className="mt-1 flex flex-wrap items-center justify-center gap-1.5">
                         {s.receipt && (
                           <>
-                            <Button variant="outline" size="sm" onClick={() => { setReceiptUrl(s.receipt as string); setReceiptOpen(true) }}>Ver comprovante</Button>
-                            <Button asChild variant="outline" size="sm">
-                              <a href={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${s.receipt}` : s.receipt)} download>Baixar</a>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="w-full sm:w-auto"
+                              onClick={() => {
+                                const cands = makeReceiptCandidates(s.receipt)
+                                setReceiptCandidates(cands)
+                                setReceiptIndex(0)
+                                setReceiptUrl(cands[0] || null)
+                                setReceiptOpen(true)
+                              }}
+                            >
+                              Ver comprovante
                             </Button>
+                            <a
+                              href={withBasePath(s.receipt)}
+                              download
+                              className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                            >
+                              Baixar
+                            </a>
                           </>
                         )}
                         <Button
                           variant="destructive"
                           size="sm"
+                          className="w-full sm:w-auto"
                           onClick={() => { setConfirmId(s.id); setConfirmOpen(true) }}
                         >
                           Excluir
@@ -181,7 +221,18 @@ export default function AdminPage() {
               <DialogTitle className="font-serif text-2xl">Comprovante</DialogTitle>
             </DialogHeader>
             {receiptUrl && (
-              <img src={(process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${receiptUrl}` : receiptUrl)} alt="Comprovante de apoio" className="w-full h-auto rounded-md border border-border" />
+              <img
+                src={receiptUrl}
+                alt="Comprovante de apoio"
+                className="w-full h-auto rounded-md border border-border"
+                onError={() => {
+                  if (receiptCandidates.length > receiptIndex + 1) {
+                    const nextIdx = receiptIndex + 1
+                    setReceiptIndex(nextIdx)
+                    setReceiptUrl(receiptCandidates[nextIdx])
+                  }
+                }}
+              />
             )}
           </DialogContent>
         </Dialog>

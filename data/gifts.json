@@ -1117,8 +1117,9 @@
     "id": 245,
     "name": "Cota para fim de semana romântico em pousada",
     "image": "/uploads/gifts/1763858939906-foto1.png",
-    "claimed": false,
-    "category": "Lua de mel"
+    "claimed": true,
+    "category": "Lua de mel",
+    "claimedBy": "Alessandro barbosa dos santos asdasdaraaaw"
   },
   {
     "id": 246,
